@@ -1,0 +1,50 @@
+<ion-view view-title="Corporation">
+    <ion-content>
+
+        <div id="content" class="grey-blue login" ng-controller="CorporationController as corporation">
+
+            <!-- Toolbar -->
+            <div id="toolbar" class="tool-login primary-color animated fadeindown">
+                <a href="javascript:history.back()" class="open-left">
+                    <i class="ion-android-arrow-back"></i>
+                </a>
+            </div>
+
+            <!-- Main Content -->
+            <div class="login-form animated fadeinup delay-2 z-depth-1">
+
+                <h1>Select Your Corporaion / Municipality</h1>
+
+                <div class="list">
+                    <i class="icon ion-document-text docIcon inlineElement"></i>
+                    <select class="browser-default" ng-model="corporation.selectDistrict" style="position: relative;width: 85%;left: 25px; display: inline">
+                        <option value="" disabled selected>Choose your District</option>
+                        <option ng-repeat="i in corporation.muncipalitiesList track by $index">{{i.municipality_name}}</option>
+                    </select>
+                </div>
+
+                <a class="waves-effect waves-light btn-large accent-color width-100 m-b-20 animated bouncein delay-4"
+                   ng-disabled="!corporation.selectDistrict" ng-click="corporation.goToSendReport()">DONE</a>
+
+            </div><!-- End of Main Contents -->
+
+
+        </div> <!-- End of Page Content -->
+
+        <style>
+            .docIcon {
+                font-size: 37px;
+                position: relative;
+                top: 8px;
+            }
+
+            .inlineElement {
+                display: inline
+            }
+
+        </style>
+
+
+    </ion-content>
+</ion-view>
+

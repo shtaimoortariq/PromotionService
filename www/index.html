@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <!--<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">-->
+
+  <meta content="IE=edge" http-equiv="x-ua-compatible">
+  <meta content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" name="viewport">
+  <meta content="yes" name="apple-mobile-web-app-capable">
+  <meta content="yes" name="apple-touch-fullscreen">
+  <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval' *; style-src  'self' 'unsafe-inline' *">
+  <!-- Fonts -->
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+  <!-- Icons -->
+  <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+  <!--material-icons-->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <title></title>
+
+  <!-- build:css styles/lib.css -->
+  <!-- bower:css -->
+  <link rel="stylesheet" href="lib/materialize/bin/materialize.css" />
+  <!-- endbower -->
+  <!-- endbuild -->
+
+  <!-- build:css styles/app.css -->
+  <!-- inject:css -->
+
+
+
+
+  <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,700' rel='stylesheet' type='text/css'>
+  <!-- Icons -->
+  <link href="http://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" media="all" rel="stylesheet" type="text/css">
+
+  <link href="css/keyframes.css" rel="stylesheet" type="text/css">
+  <link href="css/materialize.min.css" rel="stylesheet" type="text/css">
+  <link href="css/swiper.css" rel="stylesheet" type="text/css">
+  <link href="css/swipebox.min.css" rel="stylesheet" type="text/css">
+  <link href="css/style.css" rel="stylesheet" type="text/css">
+
+
+  <!--<link rel="stylesheet" href=".tmp/ionic.app.css">-->
+  <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+
+  <!-- endinject -->
+  <!-- endbuild -->
+  <!--<script src="lib/bluebird.min.js"></script>-->
+  <!-- build:js js/ionic.bundle.js -->
+  <!-- ionic/angularjs js -->
+  <script src="lib/ionic/js/ionic.bundle.js"></script>
+  <!--<script src="lib/ionic.cloud.min.js"></script>-->
+  <!-- endbuild -->
+
+  <!-- cordova script -->
+  <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+  <script src="cordova.js"></script>
+
+
+
+
+  <script src="lib/firebase/firebase.js"></script>
+  <script src="lib/angularfire/dist/angularfire.js"></script>
+  <script src="lib/s3-image-uploader/dist/image-uploader.min.js"></script>
+
+</head>
+<body ng-app="app">
+<!--
+    The nav bar that will be updated as we navigate between views.
+-->
+<ion-nav-bar class="bar-stable">
+  <ion-nav-back-button>
+  </ion-nav-back-button>
+</ion-nav-bar>
+<!--
+    The views will be rendered in the <ion-nav-view> directive below
+    Templates are in the /templates folder (but you could also
+    have templates inline in this html file if you'd like).
+-->
+<ion-nav-view></ion-nav-view>
+
+<!-- build:js js/lib.js -->
+<!-- bower:js -->
+<script src="lib/jquery/dist/jquery.js"></script>
+<script src="lib/angular-messages/angular-messages.js"></script>
+<script src="lib/materialize/bin/materialize.js"></script>
+<!-- endbower -->
+<!-- endbuild -->
+
+<!-- build:js js/app.js -->
+<!-- inject:js -->
+<script src="./core/app.module.js"></script>
+<script src="./components/corporation/corporation.module.js"></script>
+<script src="./components/dashboard/dashboard.module.js"></script>
+
+<script src="components/sendreport/sendreport.module.js"></script>
+<script src="./components/signup/signup.module.js"></script>
+
+<script src="core/app.config.js"></script>
+<script src="core/app.routes.js"></script>
+<script src="core/app.run.js"></script>
+<script src="core/app.core.module.js"></script>
+<script src="./components/corporation/corporation.controller.js"></script>
+<script src="./components/dashboard/dashboard.controller.js"></script>
+
+<script src="components/sendreport/sendreport.controller.js"></script>
+<script src="./components/signup/signup.controller.js"></script>
+<script src="core/firebaseConfig.js"></script>
+<script src="services/service.js"></script>
+<script src="services/dataStorageService.js"></script>
+
+
+
+<script src="js/chart.min.js"></script>
+<!--<script src="js/functions.js"></script>-->
+<script src="js/jquery-2.1.0.min.js"></script>
+<script src="js/jquery.mixitup.min.js"></script>
+<script src="js/jquery.smoothState.min.js"></script>
+<script src="js/jquery.swipebox.min.js"></script>
+<script src="js/masonry.min.js"></script>
+<script src="js/materialize.min.js"></script>
+<script src="js/swiper.min.js"></script>
+<!-- endinject -->
+
+
+<!-- inject:templates:js -->
+<!-- endinject -->
+<!-- endbuild -->
+</body>
+</html>
+

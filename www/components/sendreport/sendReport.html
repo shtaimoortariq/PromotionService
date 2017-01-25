@@ -1,0 +1,108 @@
+<ion-view view-title="Send Report">
+    <ion-content>
+
+
+        <div style="padding: 20px" ng-controller="SendReportController as sendReport">
+          <button class="button button-full button-energized" ng-click="addMedia()">
+            Add image
+          </button>
+          <br><br>
+<!--
+          <ion-scroll direction="y" style="height:250px; min-height: 250px; overflow: scroll; white-space: nowrap;">
+            <img ng-repeat="image in images" ng-src="{{urlForImage(image)}}" style="height:250px; padding: 5px 5px 5px 5px;"/>
+          </ion-scroll>-->
+
+          <ion-scroll direction="x" style="height:200px; min-height: 200px; overflow: scroll; white-space: nowrap;">
+            <img ng-repeat="image in images" ng-src="data:image/jpeg;base64,{{image}}" style="height:200px; padding: 5px 5px 5px 5px;"/>
+          </ion-scroll>
+
+          <div class="list">
+                <select class="browser-default" ng-model="sendReport.category">
+                    <option value="" disabled selected>Select a category</option>
+                    <option value="1">category 1</option>
+                    <option value="2">category 2</option>
+
+                </select>
+            </div>
+
+            <div class="list">
+                <select class="browser-default" ng-model="sendReport.type">
+                    <option value="" disabled selected>Type</option>
+                    <option value="1">Type 1</option>
+                    <option value="2">Type 2</option>
+                </select>
+            </div>
+
+            <div class="input-field">
+                <input id="last_name" type="text" class="validate" ng-model="sendReport.description"/>
+                <label for="last_name">Description</label>
+            </div>
+
+            <div class="input-field">
+                <input id="last_name" type="text" class="validate" ng-model="sendReport.location"/>
+                <label for="last_name">Location</label>
+            </div>
+
+            <p class="remember">
+                <input type="checkbox" ng-change="sendReport.hideMyDetails()" ng-model="sendReport.hideDetails" id="test5"/>
+                <label for="test5">Hide my details</label>
+            </p>
+
+
+            <p class="remember">
+                <input type="checkbox" ng-change="sendReport.currentLocation()" ng-model="sendReport.flagLocation" id="test6"/>
+                <label for="test6">Get latitude and longitude</label>
+            </p>
+
+
+            <a class="btn-large  width-100" ui-sref="dashboard"
+               ng-disabled="!sendReport.category || !sendReport.type || !sendReport.description || !sendReport.location">SEND</a>
+
+            <br><br>
+            <!--style="background: #00B8D4"-->
+
+        </div>
+
+      <footer class="page-footer ">
+        <div class="container">
+          <div class="row">
+            <div class="col s12">
+              <h4 style="text-align: center;color : white">ADS</h4>
+              <p class="center-align grey-text text-lighten-4">Your adds will show here</p>
+
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright blue darken-1">
+          <div class="container" style="text-align: center;">
+            Made with <i class="material-icons" style="position: relative;top: 8px;">favorite</i> by
+            inometrics
+
+          </div>
+        </div>
+      </footer>
+        <style>
+            footer.page-footer {
+                margin-top: 20px;
+                padding-top: 20px;
+                background-color: #00B8D4
+            }
+
+            .btn-large {
+                background: #00B8D4;
+                margin: 0 auto;
+                display: block;
+            }
+
+            .blue.darken-1 {
+                background: #006064 !important;
+
+            }
+
+            .width-100 {
+                width: 90% !important
+
+            }
+        </style>
+    </ion-content>
+</ion-view>
