@@ -1,0 +1,64 @@
+<ion-side-menus enable-menu-with-back-views="false">
+
+  <ion-side-menu-content class="menuRoute">
+    <ion-nav-bar style="position: absolute !important; z-index: 5" class="bar bar-header bgNone bar-positive">
+      <ion-nav-back-button class="button-clear">
+        <i class="icon ion-ios-arrow-back"></i> Back
+      </ion-nav-back-button>
+      <ion-nav-buttons side="left" style="color:blue !important;">
+        <button class="button button-clear" menu-toggle="left">
+          <span class="icon ion-navicon"></span>
+        </button>
+      </ion-nav-buttons>
+
+    </ion-nav-bar>
+    <ion-nav-view style="position: absolute !important;top:-45px;z-index: -2" name="menuContent"></ion-nav-view>
+
+  </ion-side-menu-content>
+  <!--class="sidebarBackgroundColor"-->
+  <ion-side-menu side="left">
+    <ion-content>
+
+     <!-- <div>
+        <div class="imageBorder">
+          <img class="menuProfileImage" ng-src="{{menu.userData.pic}}" alt="">
+        </div>
+
+        <h3 style="text-align: center; color:white">{{menu.userData.name}}</h3>
+        <p style="text-align: center; color:white">{{menu.userData.city}} , {{menu.userData.country}}</p>
+      </div>
+      <hr class="horizontalLine">
+
+      <br/>
+-->
+      <ion-list>
+        <ion-item class="item-icon-left" menu-close>
+          <span class="icon ion-ios-home-outline"></span> &nbsp; &nbsp; Home
+        </ion-item>
+
+        <ion-item class="item-icon-left" menu-close>
+          <span class="icon ion-android-person"></span>&nbsp; &nbsp;Profile
+        </ion-item>
+
+        <ion-item class="item-icon-left" menu-close><span class="icon
+ion-android-notifications-none"></span>&nbsp; &nbsp;Notifications
+        </ion-item>
+
+        <ion-item class="item-icon-left" menu-close>
+          <span class="icon ion-search"></span>&nbsp; &nbsp;Search
+        </ion-item>
+
+        <ion-item class="item-icon-left" menu-close>
+          <span class="icon ion-android-contacts"></span>&nbsp; &nbsp;About Us
+        </ion-item>
+
+        <ion-item class="item-icon-left" menu-close>
+          <span class="icon ion-log-out"></span>&nbsp; &nbsp;Logout
+        </ion-item>
+
+
+      </ion-list>
+
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

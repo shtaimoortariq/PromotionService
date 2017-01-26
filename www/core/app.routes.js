@@ -22,7 +22,13 @@
      })*/
 
 
-
+      .state('menu', {
+          url: "/menu",
+          templateUrl: "./components/menu/menu.html",
+          controller: 'MenuController as menu',
+          abstract: true
+        }
+      )
       .state('signup', {
         url: '/signup',
         abstract: false,
@@ -30,25 +36,47 @@
         controller: "SignupController"
       })
 
-      .state('dashboard', {
+      .state('menu.dashboard', {
         url: '/dashboard',
         abstract: false,
-        templateUrl: './components/dashboard/dashboard.html',
-        controller: "DashboardController"
+        views: {
+          'menuContent': {
+            templateUrl: './components/dashboard/dashboard.html',
+            controller: "DashboardController"
+          }
+        }
       })
 
-      .state('corporation', {
+      .state('menu.corporation', {
         url: '/corporation',
         abstract: false,
-        templateUrl: './components/corporation/corporation.html',
-        controller: "CorporationController"
+        views: {
+          'menuContent': {
+            templateUrl: './components/corporation/corporation.html',
+            controller: "CorporationController"
+          }
+        }
       })
 
-      .state('sendreport', {
+      .state('menu.sendreport', {
         url: '/sendreport',
         abstract: false,
-        templateUrl: './components/sendreport/sendreport.html',
-        controller: "SendReportController"
+        views: {
+          'menuContent': {
+            templateUrl: './components/sendreport/sendreport.html',
+            controller: "SendReportController"
+          }
+        }
+      })
+      .state('menu.newsDetail', {
+        url: '/newsdetail',
+        abstract: false,
+        views: {
+          'menuContent': {
+            templateUrl: './components/newsDetail/newsDetail.html',
+            controller: "NewsDetailController"
+          }
+        }
       });
 
 
@@ -56,7 +84,7 @@
     // Each tab has its own nav history stack which is defined in the corresponding module.
 
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise('/dashboard');
+    $urlRouterProvider.otherwise('/menu/dashboard');
   }
 
 })();
