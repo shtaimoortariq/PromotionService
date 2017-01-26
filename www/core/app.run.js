@@ -5,11 +5,22 @@
     .module('app')
     .run(runBlock);
 
-  runBlock.$inject = ['$ionicPlatform', '$state'];
+  runBlock.$inject = ['$ionicPlatform', '$state', '$ionicPush', 'addsServiceData', '$q'];
 
-  function runBlock($ionicPlatform, $state) {
+  function runBlock($ionicPlatform, $state, $ionicPush, addsServiceData, $q) {
 
     $ionicPlatform.ready(function() {
+        var vm = this;
+
+        addsServiceData.getNewsData().then(
+          function (success) {
+            $state.go('dashboard')
+          },function (error) {
+            console.log("Wrong User");
+          }
+        );
+
+
 
       var USER_STORAGE_KEY = 'promationservice_user';
       var retrievedObject = localStorage.getItem(USER_STORAGE_KEY);
@@ -17,7 +28,7 @@
       console.log(JSON.parse(retrievedObject));
 /*      if(retrievedObject) {
         console.log("true");
-        $state.go('sendreport');
+        $state.go('dashboard');
       }*/
 
 
@@ -32,11 +43,11 @@
         // org.apache.cordova.statusbar required
         StatusBar.styleLightContent();
       }
-/*      $ionicPush.register().then(function(t) {
+      $ionicPush.register().then(function(t) {
         return $ionicPush.saveToken(t);
       }).then(function(t) {
         console.log('Token saved:', t.token);
-      });*/
+      });
 
     });
   }

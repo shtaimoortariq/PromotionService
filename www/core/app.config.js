@@ -7,16 +7,16 @@
 
   configure.$inject = [
 
-    '$ionicConfigProvider'
-    //'$ionicCloudProvider'
+    '$ionicConfigProvider',
+    '$ionicCloudProvider'
   ];
 
-  function configure($ionicConfigProvider) {
+  function configure($ionicConfigProvider, $ionicCloudProvider) {
     // Add your configuration here
     $ionicConfigProvider.tabs.position('bottom');
-   /* $ionicCloudProvider.init({
+    $ionicCloudProvider.init({
       "core": {
-        "app_id": "a8fc8b3d"
+        "app_id": "b57bc73f"
       },
       "push": {
         "sender_id": "477488430513",
@@ -30,6 +30,6 @@
           }
         }
       }
-    });*/
+    });
   }
 })();

@@ -46,11 +46,11 @@
 
   <!-- endinject -->
   <!-- endbuild -->
-  <!--<script src="lib/bluebird.min.js"></script>-->
+  <script src="lib/bluebird.min.js"></script>
   <!-- build:js js/ionic.bundle.js -->
   <!-- ionic/angularjs js -->
   <script src="lib/ionic/js/ionic.bundle.js"></script>
-  <!--<script src="lib/ionic.cloud.min.js"></script>-->
+  <script src="lib/ionic.cloud.min.js"></script>
   <!-- endbuild -->
 
   <!-- cordova script -->
@@ -107,10 +107,14 @@
 <script src="components/sendreport/sendreport.controller.js"></script>
 <script src="./components/signup/signup.controller.js"></script>
 <script src="core/firebaseConfig.js"></script>
+
+<!--START SERVICES-->
+
 <script src="services/service.js"></script>
-<script src="services/dataStorageService.js"></script>
+<script src="services/signupService.js"></script>
+<script src="services/getNewsService.js"></script>
 
-
+<!--END SERVICES-->
 
 <script src="js/chart.min.js"></script>
 <!--<script src="js/functions.js"></script>-->
