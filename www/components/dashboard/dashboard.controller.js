@@ -46,6 +46,7 @@
 
 
       this.post = addsServiceData.returnNews();
+      console.log("this.post");
       console.log(this.post);
       vm.advertisement = addsServiceData.returnAdvertisement();
       console.log(vm.advertisement);

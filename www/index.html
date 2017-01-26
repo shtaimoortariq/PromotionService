@@ -39,6 +39,7 @@
   <link href="css/swiper.css" rel="stylesheet" type="text/css">
   <link href="css/swipebox.min.css" rel="stylesheet" type="text/css">
   <link href="css/style.css" rel="stylesheet" type="text/css">
+  <link href="css/custom.css" rel="stylesheet" type="text/css">
 
 
   <!--<link rel="stylesheet" href=".tmp/ionic.app.css">-->
@@ -66,13 +67,17 @@
 
 </head>
 <body ng-app="app">
+<!--<div class="spinner">-->
+  <!--<ion-spinner icon="bubbles" class="spinner-positive"></ion-spinner>-->
+<!--</div>-->
+
 <!--
     The nav bar that will be updated as we navigate between views.
 -->
-<ion-nav-bar class="bar-stable">
+<!--<ion-nav-bar class="bar-stable">
   <ion-nav-back-button>
   </ion-nav-back-button>
-</ion-nav-bar>
+</ion-nav-bar>-->
 <!--
     The views will be rendered in the <ion-nav-view> directive below
     Templates are in the /templates folder (but you could also
@@ -96,6 +101,8 @@
 
 <script src="components/sendreport/sendreport.module.js"></script>
 <script src="./components/signup/signup.module.js"></script>
+<script src="./components/newsDetail/newsDetail.module.js"></script>
+<script src="./components/menu/menu.js"></script>
 
 <script src="core/app.config.js"></script>
 <script src="core/app.routes.js"></script>
@@ -103,6 +110,7 @@
 <script src="core/app.core.module.js"></script>
 <script src="./components/corporation/corporation.controller.js"></script>
 <script src="./components/dashboard/dashboard.controller.js"></script>
+<script src="./components/newsDetail/newsdetail.controller.js"></script>
 
 <script src="components/sendreport/sendreport.controller.js"></script>
 <script src="./components/signup/signup.controller.js"></script>

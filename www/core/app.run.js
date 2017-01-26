@@ -14,7 +14,7 @@
 
         addsServiceData.getNewsData().then(
           function (success) {
-            $state.go('dashboard')
+            $state.go('menu.dashboard')
           },function (error) {
             console.log("Wrong User");
           }

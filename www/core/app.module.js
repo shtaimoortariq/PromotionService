@@ -16,9 +16,11 @@
       /* Feature areas */
 
       'app.signup',
+      'app.menu',
       'app.dashboard',
       'app.corporation',
-      'app.sendreport'
+      'app.sendreport',
+      'app.newsDetail'
 
 
     ]);
