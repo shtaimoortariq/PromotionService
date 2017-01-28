@@ -37,6 +37,7 @@ function addsServiceData($http, GetNews, $q, GetAdvertisement) {
   $http.post(GetNews.url, {"corp_id":1})
     .then(function(response) {
       vm.post = response.data.datas;
+      console.log(vm.post);
       console.log(response);
       deferred.resolve(response);
 
@@ -46,20 +47,26 @@ function addsServiceData($http, GetNews, $q, GetAdvertisement) {
       deferred.reject(error);
     });
 
-
-    $http.post(GetAdvertisement.url, {"corp_id":1}).then(function successCallback(response) {
-      console.log("True from GetAdvertisement Api");
-      vm.advertisement = response.data.datas;
-      console.log(vm.advertisement);
-
-    }, function errorCallback(response) {
-      console.log("False from GetAdvertisement Api");
-    });
-
     return deferred.promise;
   };
 
 
+  this.getNewsDataFromServer = function () {
+
+    $http.post(GetAdvertisement.url, {"corp_id": 1})
+      .then(function successCallback(response) {
+        console.log("True from GetAdvertisement Api");
+        vm.advertisement = response.data.datas;
+        console.log(vm.advertisement);
+        deferred.resolve(response);
+
+      }, function errorCallback(response) {
+        console.log("False from GetAdvertisement Api");
+        deferred.reject(error);
+
+      });
+    return deferred.promise;
+  };
   /*$http.post(GetNews.url, {"corp_id":1}).then(function successCallback(response) {
     console.log("True from  GET News Api");
     console.log(response);

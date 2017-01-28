@@ -21,14 +21,15 @@
 
         .controller('DashboardController', DashboardController);
 
-    DashboardController.$inject = ['GetNews', '$http', 'GetAdvertisement', '$scope', 'addsServiceData'];
+    DashboardController.$inject = ['GetNews', '$http', 'GetAdvertisement', '$scope', 'addsServiceData', '$stateParams'];
 
     /* @ngInject */
-    function DashboardController(GetNews, $http, GetAdvertisement, $scope, addsServiceData) {
+    function DashboardController(GetNews, $http, GetAdvertisement, $scope, addsServiceData, $stateParams) {
         var vm = this;
         this.post = [];
-        this.advertisement = [];
+        this.advertisement = JSON.parse($stateParams.data);
         console.log("DashboardController");
+        console.log(vm.advertisement);
 
 /*
       //====================START GET News FROM SERVER==================//
@@ -48,8 +49,8 @@
       this.post = addsServiceData.returnNews();
       console.log("this.post");
       console.log(this.post);
-      vm.advertisement = addsServiceData.returnAdvertisement();
-      console.log(vm.advertisement);
+      //vm.advertisement = addsServiceData.returnAdvertisement();
+      //console.log(vm.advertisement);
       //====================START GetAdvertisement FROM SERVER==================//
       // $http.post(GetAdvertisement.url, {"corp_id":1}).then(function successCallback(response) {
       //   console.log("True from GetAdvertisement Api");
@@ -92,9 +93,4 @@
           }
         });
       }
-
-
-
-
-
 })();

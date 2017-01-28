@@ -37,7 +37,7 @@
       })
 
       .state('menu.dashboard', {
-        url: '/dashboard',
+        url: '/dashboard/:data',
         abstract: false,
         views: {
           'menuContent': {
