@@ -1,5 +1,5 @@
 <ion-view>
-    <ion-content>
+    <ion-content >
 
         <div class="m-scene" id="main" ng-controller="DashboardController as dashboard"> <!-- Main Container -->
 
@@ -7,12 +7,19 @@
 
 
             <!-- Slider -->
-          <ion-slides options="dashboard.data.sliderOptions" slider="dashboard.data.sliderDelegate">
+         <!-- <ion-slides options="dashboard.data.sliderOptions" slider="dashboard.data.sliderDelegate">
             <ion-slide-page ng-repeat="bgColor in dashboard.data.bgColors">
               <div class="box {{bgColor}}"></div>
             </ion-slide-page>
           </ion-slides>
+-->
 
+
+          <ion-slides>
+            <ion-slide-page ng-repeat="i in dashboard.advertisement">
+              <img ng-src="{{i.sliders}}" />
+            </ion-slide-page>
+          </ion-slides>
 
           <!-- Page Content -->
             <div id="content">
