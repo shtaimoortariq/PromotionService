@@ -8,6 +8,7 @@
     .module('app', [
       /* Shared modules */
       'ionic',
+      'ionic.cloud',
       'app.core',
       'firebase',
       'ngCordova',
@@ -23,5 +24,6 @@
 
 
     ]);
+
 })();
 

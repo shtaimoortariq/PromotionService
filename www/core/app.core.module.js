@@ -11,7 +11,5 @@
         // 'my.appModule',
 
         /* 3rd party modules */
-
-
     ]);
 })();

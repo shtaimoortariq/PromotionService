@@ -64,3 +64,10 @@
   padding: 5px 10px;
   padding-top: 16px;
 }
+
+
+.spinner {
+  margin-top: 38vh;
+  height: 85px !important;
+  text-align: center;
+}

@@ -21,16 +21,16 @@
 
         .controller('DashboardController', DashboardController);
 
-    DashboardController.$inject = ['GetNews', '$http', 'GetAdvertisement', '$scope'];
+    DashboardController.$inject = ['GetNews', '$http', 'GetAdvertisement', '$scope', 'addsServiceData'];
 
     /* @ngInject */
-    function DashboardController(GetNews, $http, GetAdvertisement, $scope) {
+    function DashboardController(GetNews, $http, GetAdvertisement, $scope, addsServiceData) {
         var vm = this;
         this.post = [];
         this.advertisement = [];
         console.log("DashboardController");
 
-
+/*
       //====================START GET News FROM SERVER==================//
       $http.post(GetNews.url, {"corp_id":1}).then(function successCallback(response) {
         console.log("True from Dashboard Api");
@@ -42,19 +42,24 @@
         console.log("False from Dashboard Api");
         console.log(response);
       });
-      //====================END GET News FROM SERVER==================//
+      //====================END GET News FROM SERVER==================//*/
 
 
+      this.post = addsServiceData.returnNews();
+      console.log("this.post");
+      console.log(this.post);
+      vm.advertisement = addsServiceData.returnAdvertisement();
+      console.log(vm.advertisement);
       //====================START GetAdvertisement FROM SERVER==================//
-      $http.post(GetAdvertisement.url, {"corp_id":1}).then(function successCallback(response) {
-        console.log("True from GetAdvertisement Api");
-        vm.advertisement = response.data.datas;
-        console.log(vm.advertisement);
-
-      }, function errorCallback(response) {
-        console.log("False from GetAdvertisement Api");
-      });
-      //====================END GetAdvertisement FROM SERVER==================//
+      // $http.post(GetAdvertisement.url, {"corp_id":1}).then(function successCallback(response) {
+      //   console.log("True from GetAdvertisement Api");
+      //   vm.advertisement = response.data.datas;
+      //   console.log(vm.advertisement);
+      //
+      // }, function errorCallback(response) {
+      //   console.log("False from GetAdvertisement Api");
+      // });
+      // //====================END GetAdvertisement FROM SERVER==================//
 
 
       this.data = {};
@@ -79,7 +84,7 @@
         //watch our sliderDelegate reference, and use it when it becomes available
         $scope.$watch('data.sliderDelegate', function(newVal, oldVal) {
           if (newVal != null) {
-            this.data.sliderDelegate.on('slideChangeEnd', function() {
+            vm.data.sliderDelegate.on('slideChangeEnd', function() {
               vm.data.currentPage = vm.data.sliderDelegate.activeIndex;
               //use this.$apply() to refresh any content external to the slider
               this.$apply();
