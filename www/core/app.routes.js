@@ -63,7 +63,7 @@
         abstract: false,
         views: {
           'menuContent': {
-            templateUrl: './components/sendreport/sendreport.html',
+            templateUrl: './components/sendReport/sendReport.html',
             controller: "SendReportController"
           }
         }
