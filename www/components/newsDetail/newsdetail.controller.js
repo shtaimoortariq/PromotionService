@@ -12,11 +12,14 @@
 
     .controller('NewsDetailController', NewsDetailController);
 
-  NewsDetailController.$inject = ['$state', '$http', 'DistrictApi', 'signupServiceData'];
+  NewsDetailController.$inject = ['$state', '$http', 'addsServiceData'];
 
-  function NewsDetailController($state, $http, DistrictApi, signupServiceData) {
-    var _self = this;
+  function NewsDetailController($state, $http, addsServiceData) {
+    var vm = this;
+    this.post = [];
 
+    this.post = addsServiceData.returnNews();
+    console.log(vm.post);
 
   }
 })();

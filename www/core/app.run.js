@@ -12,15 +12,24 @@
     $ionicPlatform.ready(function() {
         var vm = this;
 
+
+
         addsServiceData.getNewsData().then(
           function (success) {
-            $state.go('menu.dashboard')
+            console.log('APP.RUN: GET NEWS API TRUE');
+            addsServiceData.getNewsDataFromServer().then(
+              function (success) {
+                  console.log('APP.RUN: GET ADVERTISEMENT API SUCCESS', success);
+                  $state.go('menu.dashboard', {data: JSON.stringify(success)});
+
+              },function (error) {
+                console.log("Wrong User");
+              }
+            );
           },function (error) {
-            console.log("Wrong User");
+            console.log('APP.RUN: GET NEWS API FALSE');
           }
         );
-
-
 
       var USER_STORAGE_KEY = 'promationservice_user';
       var retrievedObject = localStorage.getItem(USER_STORAGE_KEY);

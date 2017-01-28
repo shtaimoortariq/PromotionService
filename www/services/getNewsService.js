@@ -13,64 +13,78 @@ angular
     url: "http://www.inometrics.com/SERVER/cityCorp/Services/citycorp_news"
   })
 
-  .constant('GetAdvertisement', {
+  .constant('HomeSlider', {
+    url: "http://www.inometrics.com/SERVER/cityCorp/Services/citycorp_homesliders"
+  })
+
+  .constant('AddsApi', {
     url: "http://www.inometrics.com/SERVER/cityCorp/Services/citycorp_ads"
   })
 
-
   .service('addsServiceData', addsServiceData);
-  addsServiceData.$inject = ['$http', 'GetNews', '$q', 'GetAdvertisement'];
+  addsServiceData.$inject = ['$http', 'GetNews', '$q', 'HomeSlider', 'AddsApi'];
 
 
-function addsServiceData($http, GetNews, $q, GetAdvertisement) {
+function addsServiceData($http, GetNews, $q, HomeSlider, AddsApi) {
 
   var vm = this;
   this.post = [];
-  this.advertisement = [];
+  this.SliderUrl = [];
+  this.homePageSlider = [];
   console.log("Adds Storage Service");
 
-  var deferred = $q.defer();
+
 
   //====================START GET News FROM SERVER==================//
   this.getNewsData = function () {
-
+    var deferred = $q.defer();
   $http.post(GetNews.url, {"corp_id":1})
     .then(function(response) {
       vm.post = response.data.datas;
       console.log(response);
       deferred.resolve(response);
-
+      console.log('GET NEWS API TRUE');
 
   }, function (error) {
-      console.log(error);
       deferred.reject(error);
-    });
-
-
-    $http.post(GetAdvertisement.url, {"corp_id":1}).then(function successCallback(response) {
-      console.log("True from GetAdvertisement Api");
-      vm.advertisement = response.data.datas;
-      console.log(vm.advertisement);
-
-    }, function errorCallback(response) {
-      console.log("False from GetAdvertisement Api");
+      console.log('GET NEWS API FALSE');
     });
 
     return deferred.promise;
   };
 
 
-  /*$http.post(GetNews.url, {"corp_id":1}).then(function successCallback(response) {
-    console.log("True from  GET News Api");
-    console.log(response);
-    vm.post = response.data.datas;
-    console.log(vm.post);
+  this.getNewsDataFromServer = function () {
+    var deferred = $q.defer();
+    $http.post(HomeSlider.url, {"corp_id": 1})
+      .then(function successCallback(response) {
+        vm.SliderUrl = response.data.datas;
+        console.log('GET ADVERTISEMENT API TRUE');
+        console.log(vm.SliderUrl);
+        deferred.resolve(response.data.datas);
+      }, function errorCallback(response) {
+        console.log('GET ADVERTISEMENT API FALSE');
+        deferred.reject(error);
+      });
+    return deferred.promise;
+  };
 
-  }, function errorCallback(response) {
-    console.log("False from  GET News Api");
-    console.log(response);
-  });
-  *///====================END GET News FROM SERVER==================//
+  this.getNewsDataFromServer = function () {
+    var deferred = $q.defer();
+    $http.post(HomeSlider.url, {"corp_id": 1})
+      .then(function successCallback(response) {
+        vm.advertisement = response.data.datas;
+        console.log('GET ADVERTISEMENT API TRUE');
+        console.log(vm.advertisement);
+        deferred.resolve(response.data.datas);
+      }, function errorCallback(response) {
+        console.log('GET ADVERTISEMENT API FALSE');
+        deferred.reject(error);
+      });
+    return deferred.promise;
+  };
+
+  //====================END GET News FROM SERVER==================//
 
 
   this.returnNews = function () {

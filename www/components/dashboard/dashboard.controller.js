@@ -1,65 +1,27 @@
 /**
  * Created by taimoortariqdev on 1/10/2017.
  */
-(function() {
-    'use strict';
+(function () {
+  'use strict';
 
-    angular
-        .module('app.dashboard')
+  angular
+    .module('app.dashboard')
 
-        //============= START API CONSTANT =============//
+    .controller('DashboardController', DashboardController);
 
-        .constant('GetNews', {
-          url: "http://www.inometrics.com/SERVER/cityCorp/Services/citycorp_news"
-        })
+    DashboardController.$inject = ['GetNews', '$http', '$scope', 'addsServiceData', '$stateParams'];
 
-        .constant('GetAdvertisement', {
-          url: "http://www.inometrics.com/SERVER/cityCorp/Services/citycorp_ads"
-        })
+  /* @ngInject */
+    function DashboardController(GetNews, $http,  $scope, addsServiceData, $stateParams) {
+      var vm = this;
+      this.post = [];
+      this.advertisement = [];
+      this.advertisement = JSON.parse($stateParams.data);
+      console.log(vm.advertisement);
 
-
-
-        .controller('DashboardController', DashboardController);
-
-    DashboardController.$inject = ['GetNews', '$http', 'GetAdvertisement', '$scope', 'addsServiceData'];
-
-    /* @ngInject */
-    function DashboardController(GetNews, $http, GetAdvertisement, $scope, addsServiceData) {
-        var vm = this;
-        this.post = [];
-        this.advertisement = [];
-        console.log("DashboardController");
-
-/*
-      //====================START GET News FROM SERVER==================//
-      $http.post(GetNews.url, {"corp_id":1}).then(function successCallback(response) {
-        console.log("True from Dashboard Api");
-        console.log(response);
-        vm.post = response.data.datas;
-        console.log(vm.post);
-
-      }, function errorCallback(response) {
-        console.log("False from Dashboard Api");
-        console.log(response);
-      });
-      //====================END GET News FROM SERVER==================//*/
-
+      console.log("DashboardController");
 
       this.post = addsServiceData.returnNews();
-      console.log("this.post");
-      console.log(this.post);
-      vm.advertisement = addsServiceData.returnAdvertisement();
-      console.log(vm.advertisement);
-      //====================START GetAdvertisement FROM SERVER==================//
-      // $http.post(GetAdvertisement.url, {"corp_id":1}).then(function successCallback(response) {
-      //   console.log("True from GetAdvertisement Api");
-      //   vm.advertisement = response.data.datas;
-      //   console.log(vm.advertisement);
-      //
-      // }, function errorCallback(response) {
-      //   console.log("False from GetAdvertisement Api");
-      // });
-      // //====================END GetAdvertisement FROM SERVER==================//
 
 
       this.data = {};
@@ -71,30 +33,52 @@
       }
 
 
-        //some options to pass to our slider
-        vm.data.sliderOptions = {
-          initialSlide: 0,
-          direction: 'horizontal', //or vertical
-          speed: 300 //0.3s transition
-        };
+      //some options to pass to our slider
+      /*vm.data.sliderOptions = {
+        initialSlide: 0,
+        direction: 'horizontal', //or vertical
+        speed: 300 //0.3s transition
+      };
 
-        //create delegate reference to link with slider
-        vm.data.sliderDelegate = null;
+      //create delegate reference to link with slider
+      vm.data.sliderDelegate = null;
 
-        //watch our sliderDelegate reference, and use it when it becomes available
-        $scope.$watch('data.sliderDelegate', function(newVal, oldVal) {
-          if (newVal != null) {
-            vm.data.sliderDelegate.on('slideChangeEnd', function() {
-              vm.data.currentPage = vm.data.sliderDelegate.activeIndex;
-              //use this.$apply() to refresh any content external to the slider
-              this.$apply();
-            });
-          }
-        });
-      }
-
-
+      //watch our sliderDelegate reference, and use it when it becomes available
+      $scope.$watch('vm.data.sliderDelegate', function (newVal, oldVal) {
+        if (newVal != null) {
+          vm.data.sliderDelegate.on('slideChangeEnd', function () {
+            vm.data.currentPage = vm.data.sliderDelegate.activeIndex;
+            //use this.$apply() to refresh any content external to the slider
+            this.$apply();
+          });
+        }
+      });
+*/
 
 
+     /* $scope.options = {
+        loop: false,
+        effect: 'fade',
+        speed: 500
+      };
 
+      $scope.$on("$ionicSlides.sliderInitialized", function(event, data){
+        // data.slider is the instance of Swiper
+        $scope.slider = data.slider;
+      });
+
+      $scope.$on("$ionicSlides.slideChangeStart", function(event, data){
+        console.log('Slide change is beginning');
+      });
+
+      $scope.$on("$ionicSlides.slideChangeEnd", function(event, data){
+        // note: the indexes are 0-based
+        $scope.activeIndex = data.slider.activeIndex;
+        $scope.previousIndex = data.slider.previousIndex;
+      });
+
+*/
+
+
+    }
 })();
