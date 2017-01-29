@@ -33,10 +33,10 @@
 
       .controller('CorporationController', CorporationController);
 
-    CorporationController.$inject = ['$state', 'signupServiceData', '$http',  'Muncipalities', 'SignUpApi', 'List'];
+    CorporationController.$inject = ['$state', 'signupServiceData', '$http',  'Muncipalities', 'SignUpApi', 'List', 'addsServiceData'];
 
 
-    function CorporationController($state, signupServiceData, $http, Muncipalities, SignUpApi, List) {
+    function CorporationController($state, signupServiceData, $http, Muncipalities, SignUpApi, List, addsServiceData) {
       console.log("CorporationController");
         var vm = this;
         var USER_STORAGE_KEY = 'promationservice_user';
@@ -55,7 +55,8 @@
       //====================END GET Muncipalities FROM SERVER==================//
 
         this.goToSendReport = function () {
-
+          this.temp = addsServiceData.returnAdvertisement();
+          console.log(this.temp)
           //=====for corporation index=======//
           for(var i = 0; i < vm.muncipalitiesList.length; ++i) {
             if(vm.selectDistrict == vm.muncipalitiesList[i].municipality_name) {
@@ -67,6 +68,7 @@
           //=======START SIGNUP SERVICE MANUPILATION===========//
           signupServiceData.setCorporation(temp);
           vm.user = signupServiceData.getUser();
+
           //=======END SIGNUP SERVICE MANUPILATION===========//
 
 
@@ -75,8 +77,9 @@
           $http.post(SignUpApi.url, vm.user).then(function (data) {
             console.log("Local storage");
             window.localStorage.setItem(USER_STORAGE_KEY,JSON.stringify(vm.user));
-           $state.go('sendreport');
+            $state.go('menu.dashboard', {data: JSON.stringify(vm.temp)});
            }, function (error) {
+            console.log("error in corporation")
            });
           //============end $http request to serve for signup============//
 

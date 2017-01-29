@@ -69,7 +69,7 @@
         }
       })
       .state('menu.newsDetail', {
-        url: '/newsdetail',
+        url: '/newsdetail/:data',
         abstract: false,
         views: {
           'menuContent': {

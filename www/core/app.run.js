@@ -20,10 +20,16 @@
             addsServiceData.getNewsDataFromServer().then(
               function (success) {
                   console.log('APP.RUN: GET ADVERTISEMENT API SUCCESS', success);
-                  $state.go('menu.dashboard', {data: JSON.stringify(success)});
+                addsServiceData.getAdsFromServer().then(
+                  function (success) {
+                    console.log('APP.RUN: GET ADS API SUCCESS', success);
 
+                  },function (error) {
+                    console.log("APP.RUN: GET ADS API FALSE");
+                  }
+                );
               },function (error) {
-                console.log("Wrong User");
+                console.log("APP.RUN: GET ADVERTISEMENT API FALSE");
               }
             );
           },function (error) {
@@ -35,10 +41,10 @@
       var retrievedObject = localStorage.getItem(USER_STORAGE_KEY);
       console.log("retrievedObject");
       console.log(JSON.parse(retrievedObject));
-/*      if(retrievedObject) {
+      if(retrievedObject) {
         console.log("true");
-        $state.go('dashboard');
-      }*/
+        $state.go('menu.dashboard', {data: JSON.stringify(success)});
+      }
 
 
       // Hide the accessory bar by default (remove this to show the accessory bar

@@ -51,7 +51,7 @@
       signupServiceData.setSignUpPageData(vm.name, vm.mobileNumber, temp);
       //====================END SET DATA TO SERVICE==================//
 
-      $state.go('corporation');
+      $state.go('menu.corporation');
 
     };
 

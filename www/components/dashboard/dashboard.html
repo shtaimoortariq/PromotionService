@@ -1,5 +1,5 @@
 <ion-view>
-    <ion-content >
+    <ion-content>
 
         <div class="m-scene" id="main" ng-controller="DashboardController as dashboard"> <!-- Main Container -->
 
@@ -15,8 +15,8 @@
 -->
 
 
-          <ion-slides>
-            <ion-slide-page ng-repeat="i in dashboard.advertisement">
+          <ion-slides  options="dashboard.options" slider="data.slider">
+            <ion-slide-page ng-repeat="i in dashboard.advertisement track by $index">
               <img ng-src="{{i.sliders}}" />
             </ion-slide-page>
           </ion-slides>
@@ -37,7 +37,7 @@
                       <div class="blog-preview p-20">
                           <h4 class="uppercase">{{i.news_title}}</h4>
                           <p>{{i.news_desc}}</p>
-                          <a href="article.html" class="waves-effect waves-light btn primary-color">Read</a>
+                          <a class="waves-effect waves-light btn primary-color" ng-click="dashboard.goToReadMore($index)">Read</a>
                       </div>
                 </div>
             </div> <!-- End of Page Container -->

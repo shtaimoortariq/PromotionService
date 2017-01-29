@@ -10,96 +10,83 @@
   </ion-nav-buttons>
   <ion-content>
 
-    <img src="img/aaa.jpg" width="100" height="40" alt="">
-    <a style="border-radius: 100%;background: #B3E5FC"
-       class="button button-icon icon ion-android-bookmark customIcon iconOutline"></a>
-    <br>
-    <br>
-    <p style="text-transform: uppercase; font-size: 1.8em;padding: 0 20px;letter-spacing: .14em; line-height: 1em">
-      Drawing a single stroke</p>
 
-    <div class="item item-avatar">
-      <img ng-src="img/dummy.png">
-      <h2 style="margin-top: 9px;">Lora Bell</h2>
-    </div>
+    <div ng-controller="NewsDetailController as news">
 
-    <div class="item item-body">
+      <img ng-src="{{news.post.news_img}}" width="100" height="40" alt="">
+      <a style="border-radius: 100%;background: #B3E5FC"
+         class="button button-icon icon ion-android-bookmark customIcon iconOutline"></a>
+      <br>
+      <br>
+      <p style="text-transform: uppercase; font-size: 1.8em;padding: 0 20px;letter-spacing: .14em; line-height: 1em">
+        {{news.post.news_title}}</p>
 
-      <p class="firstLarge">Afoihai afjlka foiioahfioha flioa il ajha filh alhaiol kla hljfah jklla yhlaf kjh alhliafh
-        lkalkaj
-        fahklf jahif lah jla ha oh ajlhaljhfila ukoahf kka jhah ioafl lja a laiiila h oliahilf la lha ilhl l ahlai h
-        fahklf jahif lah jla ha oh ajlhaljhfila ukoahf kka jhah ioafl lja a laiiila h oliahilf la lha ilhl l ahlai h
-        fahklf jahif lah jla ha oh ajlhaljhfila ukoahf kka jhah ioafl lja a laiiila h oliahilf la lha ilhl l ahlai fggwh
-        fahklf jahif lah jla ha oh ajlhaljhfila ukoahf kka jhah ioafl lja a laiiila h oliahilf la lha ilhl l ahlai fggwh
-        fahklf jahif lah jla ha oh ajlhaljhfila ukoahf kka jhah ioafl lja a laiiila h oliahilf la lha ilhl l ahlai fggwh
-        fahklf jahif lah jla ha oh ajlhaljhfila ukoahf kka jhah ioafl lja a laiiila h oliahilf la lha ilhl l ahlai fggwh
-        fahklf jahif lah jla ha oh ajlhaljhfila ukoahf kka jhah ioafl lja a laiiila h oliahilf la lha ilhl l ahlai fggwh
-        fahklf jahif lah jla ha oh ajlhaljhfila ukoahf kka jhah ioafl lja a laiiila h oliahilf la lha ilhl l ahlai
-        fggwh</p>
-    </div>
+      <div class="item item-avatar">
+        <img ng-src="{{news.post.author_img}}">
+        <h2 style="margin-top: 9px;">{{news.post.news_author}}</h2>
+      </div>
 
-    <div class="item item-avatar">
-      <img ng-src="img/dummy.png">
-      <h2 style="margin-top: 9px;">Luke Noel</h2>
-    </div>
+      <div class="item item-body">
 
-    <div class="item item-body">
+        <p class="firstLarge">{{news.post.news_desc}}</p>
+      </div>
 
-      <p class="firstLarge">Afoihai afjlka foiioahfioha flioa il ajha filh alhaiol kla hljfah jklla yhlaf kjh alhliafh
-        lkalkaj
-        fahklf jahif lah jla ha oh ajlhaljhfila ukoahf kka jhah ioafl lja a laiiila h oliahilf la lha ilhl l ahlai h
-        fahklf jahif lah jla ha oh ajlhaljhfila ukoahf kka jhah ioafl lja a laiiila h oliahilf la lha ilhl l ahlai h
-        fahklf jahif lah jla ha oh ajlhaljhfila ukoahf kka jhah ioafl lja a laiiila h oliahilf la lha ilhl l ahlai fggwh
-        fahklf jahif lah jla ha oh ajlhaljhfila ukoahf kka jhah ioafl lja a laiiila h oliahilf la lha ilhl l ahlai fggwh
-        fahklf jahif lah jla ha oh ajlhaljhfila ukoahf kka jhah ioafl lja a laiiila h oliahilf la lha ilhl l ahlai
-        fggwh</p>
-    </div>
+      <div class="item item-avatar">
+        <img ng-src="{{news.post.author_img}}">
+        <h2 style="margin-top: 9px;">{{news.post.news_author}}</h2>
+      </div>
 
-    <footer class="page-footer ">
-      <div class="container">
-        <div class="row">
-          <div class="col s12">
-            <h4 style="text-align: center;color : white">ADS</h4>
-            <p class="center-align grey-text text-lighten-4">Your adds will show here</p>
+      <div class="item item-body">
+
+        <p class="firstLarge">{{news.post.author_details}}</p>
+      </div>
+
+      <footer class="page-footer ">
+        <div class="container">
+          <div class="row">
+            <div class="col s12">
+              <h4 style="text-align: center;color : white">ADS</h4>
+              <p class="center-align grey-text text-lighten-4">Your adds will show here</p>
+
+            </div>
+          </div>
+        </div>
+        <div class="footer-copyright blue darken-1">
+          <div class="container" style="text-align: center;">
+            Made with <i class="material-icons" style="position: relative;top: 8px;">favorite</i> by
+            inometrics
 
           </div>
         </div>
-      </div>
-      <div class="footer-copyright blue darken-1">
-        <div class="container" style="text-align: center;">
-          Made with <i class="material-icons" style="position: relative;top: 8px;">favorite</i> by
-          inometrics
+      </footer>
 
-        </div>
-      </div>
-    </footer>
+      <br>
+      <br>
+      <br>
 
-    <br>
-    <br>
-    <br>
+      <style>
+        footer.page-footer {
+          margin-bottom: 20px;
+          padding-top: 20px;
+          background-color: #00B8D4
+        }
 
-    <style>
-      footer.page-footer {
-        margin-bottom: 20px;
-        padding-top: 20px;
-        background-color: #00B8D4
-      }
+        .btn-large {
+          background: #00B8D4;
+          margin: 0 auto;
+          display: block;
+        }
 
-      .btn-large {
-        background: #00B8D4;
-        margin: 0 auto;
-        display: block;
-      }
+        .blue.darken-1 {
+          background: #006064 !important;
 
-      .blue.darken-1 {
-        background: #006064 !important;
+        }
 
-      }
+        .width-100 {
+          width: 90% !important
 
-      .width-100 {
-        width: 90% !important
-
-      }
-    </style>
+        }
+      </style>
+    </div>
   </ion-content>
 </ion-view>

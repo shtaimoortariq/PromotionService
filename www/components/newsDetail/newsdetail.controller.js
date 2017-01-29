@@ -12,13 +12,13 @@
 
     .controller('NewsDetailController', NewsDetailController);
 
-  NewsDetailController.$inject = ['$state', '$http', 'addsServiceData'];
+  NewsDetailController.$inject = ['$state', '$http', 'addsServiceData', '$stateParams'];
 
-  function NewsDetailController($state, $http, addsServiceData) {
+  function NewsDetailController($state, $http, addsServiceData, $stateParams) {
     var vm = this;
     this.post = [];
-
-    this.post = addsServiceData.returnNews();
+    this.post = JSON.parse($stateParams.data);
+    //this.post = addsServiceData.returnNews();
     console.log(vm.post);
 
   }

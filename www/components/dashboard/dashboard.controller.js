@@ -9,14 +9,18 @@
 
     .controller('DashboardController', DashboardController);
 
-    DashboardController.$inject = ['GetNews', '$http', '$scope', 'addsServiceData', '$stateParams'];
+    DashboardController.$inject = ['addsServiceData', '$state' ,'$stateParams', '$scope'];
 
   /* @ngInject */
-    function DashboardController(GetNews, $http,  $scope, addsServiceData, $stateParams) {
+    function DashboardController(addsServiceData, $state,$stateParams, $scope) {
       var vm = this;
       this.post = [];
       this.advertisement = [];
       this.advertisement = JSON.parse($stateParams.data);
+      for(var i = 0; i < vm.advertisement.length; ++i) {
+        vm.advertisement[i].sliders = "./"+vm.advertisement[i].sliders;
+      }
+
       console.log(vm.advertisement);
 
       console.log("DashboardController");
@@ -24,24 +28,23 @@
       this.post = addsServiceData.returnNews();
 
 
-      this.data = {};
-      this.data.bgColors = [];
-      this.data.currentPage = 0;
-
-      for (var i = 0; i < 10; i++) {
-        this.data.bgColors.push("bgColor_" + i);
-      }
 
 
-      //some options to pass to our slider
-      /*vm.data.sliderOptions = {
+      this.goToReadMore = function (index) {
+        console.log(index);
+        $state.go('menu.newsDetail', {data: JSON.stringify(vm.post[index])});
+      };
+
+
+/*      //some options to pass to our slider
+      this.data.sliderOptions = {
         initialSlide: 0,
         direction: 'horizontal', //or vertical
         speed: 300 //0.3s transition
       };
 
       //create delegate reference to link with slider
-      vm.data.sliderDelegate = null;
+      this.data.sliderDelegate = null;
 
       //watch our sliderDelegate reference, and use it when it becomes available
       $scope.$watch('vm.data.sliderDelegate', function (newVal, oldVal) {
@@ -52,11 +55,10 @@
             this.$apply();
           });
         }
-      });
-*/
+      });*/
 
 
-     /* $scope.options = {
+      $scope.options = {
         loop: false,
         effect: 'fade',
         speed: 500
@@ -77,7 +79,6 @@
         $scope.previousIndex = data.slider.previousIndex;
       });
 
-*/
 
 
     }

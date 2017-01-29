@@ -17,20 +17,20 @@ angular
     url: "http://www.inometrics.com/SERVER/cityCorp/Services/citycorp_homesliders"
   })
 
-  .constant('AddsApi', {
+  .constant('AdsApi', {
     url: "http://www.inometrics.com/SERVER/cityCorp/Services/citycorp_ads"
   })
 
   .service('addsServiceData', addsServiceData);
-  addsServiceData.$inject = ['$http', 'GetNews', '$q', 'HomeSlider', 'AddsApi'];
+  addsServiceData.$inject = ['$http', 'GetNews', '$q', 'HomeSlider', 'AdsApi'];
 
 
-function addsServiceData($http, GetNews, $q, HomeSlider, AddsApi) {
+function addsServiceData($http, GetNews, $q, HomeSlider, AdsApi) {
 
   var vm = this;
   this.post = [];
   this.SliderUrl = [];
-  this.homePageSlider = [];
+  this.ads = [];
   console.log("Adds Storage Service");
 
 
@@ -69,16 +69,16 @@ function addsServiceData($http, GetNews, $q, HomeSlider, AddsApi) {
     return deferred.promise;
   };
 
-  this.getNewsDataFromServer = function () {
+  this.getAdsFromServer = function () {
     var deferred = $q.defer();
-    $http.post(HomeSlider.url, {"corp_id": 1})
+    $http.post(AdsApi.url, {"corp_id": 1})
       .then(function successCallback(response) {
-        vm.advertisement = response.data.datas;
-        console.log('GET ADVERTISEMENT API TRUE');
-        console.log(vm.advertisement);
+        vm.ads = response.data.datas;
+        console.log('GET ADS API TRUE');
+        console.log(vm.ads);
         deferred.resolve(response.data.datas);
       }, function errorCallback(response) {
-        console.log('GET ADVERTISEMENT API FALSE');
+        console.log('GET ADS API FALSE');
         deferred.reject(error);
       });
     return deferred.promise;
@@ -93,7 +93,10 @@ function addsServiceData($http, GetNews, $q, HomeSlider, AddsApi) {
 
 
   this.returnAdvertisement = function () {
-    return vm.advertisement;
-  }
+    return vm.SliderUrl;
+  };
 
+  this.returnAds = function () {
+    return vm.ads;
+  };
 }
