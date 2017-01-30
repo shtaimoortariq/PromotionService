@@ -22,6 +22,14 @@
           </ion-slides>
 
           <!-- Page Content -->
+
+          <div class="card">
+            <div class="item item-text-wrap">
+              {{dashboard.completeDate}}
+            </div>
+          </div>
+
+
             <div id="content">
                 <div ng-repeat="i in dashboard.post" class="blog-card animated fadein delay-1">
                     <div class="blog-header">
@@ -42,23 +50,20 @@
                 </div>
             </div> <!-- End of Page Container -->
 
-        </div>
-
-      <footer class="page-footer ">
-        <div class="container">
-          <div class="row">
-            <div class="col s12">
-              <h4 style="text-align: center;color : white">ADS</h4>
-              <p class="center-align grey-text text-lighten-4">Your adds will show here</p>
-
-            </div>
+          <div class="col s12">
+            <img ng-src="{{dashboard.temp.ad_image}}"/>
           </div>
+
         </div>
-        <div class="footer-copyright blue darken-1">
+
+
+
+
+      <footer class="page-footer">
+        <div class="footer-copyright blue">
           <div class="container" style="text-align: center;">
             Made with <i class="material-icons" style="position: relative;top: 8px;">favorite</i> by
             inometrics
-
           </div>
         </div>
       </footer>
@@ -71,46 +76,6 @@
 
         ion-slides {
           height: 250px !important;
-        }
-
-        .bgColor_0 {
-          background-color: #cc2244;
-        }
-
-        .bgColor_1 {
-          background-color: #cc6622;
-        }
-
-        .bgColor_2 {
-          background-color: #cccc22;
-        }
-
-        .bgColor_3 {
-          background-color: #66cc22;
-        }
-
-        .bgColor_4 {
-          background-color: #22cc44;
-        }
-
-        .bgColor_5 {
-          background-color: #22ccaa;
-        }
-
-        .bgColor_6 {
-          background-color: #2288cc;
-        }
-
-        .bgColor_7 {
-          background-color: #2222cc;
-        }
-
-        .bgColor_8 {
-          background-color: #8822cc;
-        }
-
-        .bgColor_9 {
-          background-color: #cc22aa;
         }
 
         .swiper-container-horizontal > .swiper-pagination {

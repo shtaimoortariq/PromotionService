@@ -16,9 +16,19 @@
       var vm = this;
       this.post = [];
       this.advertisement = [];
+      this.ads = [];
+      this.temp = '';
       this.advertisement = JSON.parse($stateParams.data);
+      this.ads = addsServiceData.returnAds();
+      this.temp = this.ads[0];
+
+      console.log(vm.ads);
+      console.log(vm.temp);
+
+
       for(var i = 0; i < vm.advertisement.length; ++i) {
         vm.advertisement[i].sliders = "./"+vm.advertisement[i].sliders;
+        console.log(vm.advertisement[i]);
       }
 
       console.log(vm.advertisement);
@@ -35,6 +45,19 @@
         $state.go('menu.newsDetail', {data: JSON.stringify(vm.post[index])});
       };
 
+
+      this.monthNames = ["January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+      ];
+
+      this.dateObject = new Date();
+
+      this.day = this.dateObject.getDay();
+      this.month = this.monthNames[this.dateObject.getMonth()];
+      this.year = this.dateObject.getFullYear();
+
+      this.completeDate = this.day + " " + this.month + " " + this.year;
+      console.log(vm.completeDate);
 
 /*      //some options to pass to our slider
       this.data.sliderOptions = {

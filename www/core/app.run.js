@@ -12,18 +12,25 @@
     $ionicPlatform.ready(function() {
         var vm = this;
 
+      var USER_STORAGE_KEY = 'promationservice_user';
+      var retrievedObject = localStorage.getItem(USER_STORAGE_KEY);
+      console.log("retrievedObject");
+      console.log(JSON.parse(retrievedObject));
 
 
         addsServiceData.getNewsData().then(
-          function (success) {
+          function (successNews) {
             console.log('APP.RUN: GET NEWS API TRUE');
             addsServiceData.getNewsDataFromServer().then(
-              function (success) {
-                  console.log('APP.RUN: GET ADVERTISEMENT API SUCCESS', success);
+              function (successAdvertisement) {
+                  console.log('APP.RUN: GET ADVERTISEMENT API SUCCESS', successAdvertisement);
                 addsServiceData.getAdsFromServer().then(
                   function (success) {
                     console.log('APP.RUN: GET ADS API SUCCESS', success);
-
+                    if(retrievedObject) {
+                      console.log("true");
+                      $state.go('menu.dashboard', {data: JSON.stringify(successNews)});
+                    }
                   },function (error) {
                     console.log("APP.RUN: GET ADS API FALSE");
                   }
@@ -37,14 +44,6 @@
           }
         );
 
-      var USER_STORAGE_KEY = 'promationservice_user';
-      var retrievedObject = localStorage.getItem(USER_STORAGE_KEY);
-      console.log("retrievedObject");
-      console.log(JSON.parse(retrievedObject));
-      if(retrievedObject) {
-        console.log("true");
-        $state.go('menu.dashboard', {data: JSON.stringify(success)});
-      }
 
 
       // Hide the accessory bar by default (remove this to show the accessory bar

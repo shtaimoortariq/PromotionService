@@ -33,7 +33,7 @@
                 <div class="list">
                     <!--<i class="prefix"></i>-->
                     <i class="icon ion-document-text docIcon"></i>
-                    <select class="browser-default" ng-model="signup.district" ng-change="signup.selectDistrict($index)" style="bottom: 35px; position: relative;width: 85%;left: 50px;">
+                    <select class="browser-default" ng-model="signup.district" style="bottom: 35px; position: relative;width: 85%;left: 50px;">
                       <option value="" disabled selected>Choose your District</option>
                       <option ng-repeat="district in signup.selectDistrict track by $index">{{district.district_name}}</option>
                     </select>

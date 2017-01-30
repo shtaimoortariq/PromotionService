@@ -56,7 +56,7 @@
 
         this.goToSendReport = function () {
           this.temp = addsServiceData.returnAdvertisement();
-          console.log(this.temp)
+          console.log(this.temp);
           //=====for corporation index=======//
           for(var i = 0; i < vm.muncipalitiesList.length; ++i) {
             if(vm.selectDistrict == vm.muncipalitiesList[i].municipality_name) {
@@ -76,6 +76,8 @@
           //============ start $http request to serve for signup============//
           $http.post(SignUpApi.url, vm.user).then(function (data) {
             console.log("Local storage");
+            console.log(vm.user);
+
             window.localStorage.setItem(USER_STORAGE_KEY,JSON.stringify(vm.user));
             $state.go('menu.dashboard', {data: JSON.stringify(vm.temp)});
            }, function (error) {
