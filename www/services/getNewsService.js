@@ -54,7 +54,7 @@ function addsServiceData($http, GetNews, $q, HomeSlider, AdsApi) {
   };
 
 
-  this.getNewsDataFromServer = function () {
+  this.getSliderImageDataFromServer = function () {
     var deferred = $q.defer();
     $http.post(HomeSlider.url, {"corp_id": 1})
       .then(function successCallback(response) {

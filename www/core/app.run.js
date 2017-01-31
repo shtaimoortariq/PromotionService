@@ -21,7 +21,7 @@
         addsServiceData.getNewsData().then(
           function (successNews) {
             console.log('APP.RUN: GET NEWS API TRUE');
-            addsServiceData.getNewsDataFromServer().then(
+            addsServiceData.getSliderImageDataFromServer().then(
               function (successAdvertisement) {
                   console.log('APP.RUN: GET ADVERTISEMENT API SUCCESS', successAdvertisement);
                 addsServiceData.getAdsFromServer().then(
@@ -30,6 +30,9 @@
                     if(retrievedObject) {
                       console.log("true");
                       $state.go('menu.dashboard', {data: JSON.stringify(successNews)});
+                    }
+                    else {
+                      $state.go('signup');
                     }
                   },function (error) {
                     console.log("APP.RUN: GET ADS API FALSE");

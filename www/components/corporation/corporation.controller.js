@@ -55,7 +55,7 @@
       //====================END GET Muncipalities FROM SERVER==================//
 
         this.goToSendReport = function () {
-          this.temp = addsServiceData.returnAdvertisement();
+          this.temp = addsServiceData.returnNews();
           console.log(this.temp);
           //=====for corporation index=======//
           for(var i = 0; i < vm.muncipalitiesList.length; ++i) {

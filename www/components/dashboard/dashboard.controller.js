@@ -15,7 +15,7 @@
     function DashboardController(addsServiceData, $state,$stateParams, $scope) {
       var vm = this;
       this.post = [];
-      this.advertisement = [];
+      this.sliders = [];
       this.ads = [];
       this.temp = '';
       this.advertisement = JSON.parse($stateParams.data);
@@ -25,11 +25,6 @@
       console.log(vm.ads);
       console.log(vm.temp);
 
-
-      for(var i = 0; i < vm.advertisement.length; ++i) {
-        vm.advertisement[i].sliders = "./"+vm.advertisement[i].sliders;
-        console.log(vm.advertisement[i]);
-      }
 
       console.log(vm.advertisement);
 
@@ -52,7 +47,7 @@
 
       this.dateObject = new Date();
 
-      this.day = this.dateObject.getDay();
+      this.day = this.dateObject.getDate();
       this.month = this.monthNames[this.dateObject.getMonth()];
       this.year = this.dateObject.getFullYear();
 
