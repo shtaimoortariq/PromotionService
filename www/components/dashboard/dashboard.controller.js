@@ -1,14 +1,9 @@
-/**
- * Created by taimoortariqdev on 1/10/2017.
- */
-(function () {
-  'use strict';
-
-  angular
+angular
     .module('app.dashboard')
 
     .controller('DashboardController', DashboardController);
 
+<<<<<<< HEAD
     DashboardController.$inject = ['addsServiceData', '$state' ,'$stateParams', '$scope', '$rootScope'];
 
   /* @ngInject */
@@ -16,10 +11,20 @@
       var vm = this;
       this.post = [];
       this.sliders = [];
+=======
+    DashboardController.$inject = ['addsServiceData', '$state' ,'$stateParams', '$scope', '$interval'];
+
+  /* @ngInject */
+    function DashboardController(addsServiceData, $state,$stateParams, $scope, $interval) {
+      var vm = this;
+      this.post = [];
+      this.advertisement = [];
+      this.defaultAdPic = './img/sidebar.PNG';
       this.ads = [];
       this.temp = '';
       this.advertisement = JSON.parse($stateParams.data);
       this.ads = addsServiceData.returnAds();
+
       this.sliderImages = addsServiceData.returnAdvertisement();
       console.log(vm.sliderImages);
       console.log(vm.sliderImages.length);
@@ -28,6 +33,17 @@
       this.temp = this.ads[0];
       console.log(vm.ads);
       console.log(vm.temp);
+
+      /*this.temp = this.ads[0];*/
+
+      /*console.log(vm.ads);
+      console.log(vm.temp);*/
+
+      $interval(function() {
+        var x = Math.floor((Math.random() * (vm.ads.length)));
+        vm.temp = vm.ads[x];
+      }, 5000);
+
 
       console.log(vm.advertisement);
       console.log("DashboardController");
@@ -99,6 +115,4 @@
       });
 
 
-
     }
-})();

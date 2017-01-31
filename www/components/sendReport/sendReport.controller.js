@@ -200,10 +200,10 @@
     .module('app.sendreport')
     .controller('SendReportController', SendReportController);
 
-  SendReportController.$inject = ['$cordovaGeolocation', '$cordovaImagePicker','$scope' ,'$cordovaDevice', '$cordovaFile', '$ionicPlatform', '$cordovaEmailComposer', '$ionicActionSheet', 'ImageService', 'FileService', '$cordovaToast'];
+  SendReportController.$inject = ['$cordovaGeolocation', '$cordovaImagePicker','$scope' ,'$cordovaDevice', '$cordovaFile', '$ionicPlatform', '$cordovaEmailComposer', '$ionicActionSheet', 'ImageService', 'FileService', '$cordovaToast', 'addsServiceData','$interval'];
 
   /* @ngInject */
-  function SendReportController($cordovaGeolocation, $cordovaImagePicker, $scope, cordovaDevice, $cordovaFile, $ionicPlatform, $cordovaEmailComposer, $ionicActionSheet, ImageService, FileService, $cordovaToast) {
+  function SendReportController($cordovaGeolocation, $cordovaImagePicker, $scope, cordovaDevice, $cordovaFile, $ionicPlatform, $cordovaEmailComposer, $ionicActionSheet, ImageService, FileService, $cordovaToast, addsServiceData, $interval) {
     var vm = this;
 
     this.hideDetails = false;
@@ -212,10 +212,22 @@
     this.description = '';
     this.location = '';
     this.flagLocation = false;
+    this.ads = [];
+    this.temp = '';
+    this.advertisement = JSON.parse($stateParams.data);
+    this.ads = addsServiceData.returnAds();
     this.collection = {
       selectedImage: ''
     };
-    this.sendResponseToServer = {}
+
+    this.sendResponseToServer = {};
+
+
+    $interval(function() {
+      var x = Math.floor((Math.random() * (vm.ads.length)));
+      vm.temp = vm.ads[x];
+    }, 5000);
+
 
     //GET CORDOVA  http://ngcordova.com/docs/install/
     //GET LOCATION CORDOVA FUNCTION http://ngcordova.com/docs/plugins/geolocation/
