@@ -3,15 +3,6 @@ angular
 
     .controller('DashboardController', DashboardController);
 
-<<<<<<< HEAD
-    DashboardController.$inject = ['addsServiceData', '$state' ,'$stateParams', '$scope', '$rootScope'];
-
-  /* @ngInject */
-    function DashboardController(addsServiceData, $state,$stateParams, $scope, $rootScope) {
-      var vm = this;
-      this.post = [];
-      this.sliders = [];
-=======
     DashboardController.$inject = ['addsServiceData', '$state' ,'$stateParams', '$scope', '$interval'];
 
   /* @ngInject */
@@ -21,6 +12,7 @@ angular
       this.advertisement = [];
       this.defaultAdPic = './img/sidebar.PNG';
       this.ads = [];
+      this.sliders = [];
       this.temp = '';
       this.advertisement = JSON.parse($stateParams.data);
       this.ads = addsServiceData.returnAds();
