@@ -209,12 +209,13 @@
     this.hideDetails = false;
     this.category = '';
     this.type = '';
+    this.defaultAdPic = './img/sidebar.PNG';
     this.description = '';
     this.location = '';
     this.flagLocation = false;
     this.ads = [];
     this.temp = '';
-    this.advertisement = JSON.parse($stateParams.data);
+    //this.advertisement = JSON.parse($stateParams.data);
     this.ads = addsServiceData.returnAds();
     this.collection = {
       selectedImage: ''
