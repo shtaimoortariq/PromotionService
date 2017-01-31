@@ -1,5 +1,5 @@
 <ion-view>
-    <ion-content>
+    <ion-content style="background-color: gainsboro">
 
         <div class="m-scene" id="main" ng-controller="DashboardController as dashboard"> <!-- Main Container -->
 
@@ -50,23 +50,23 @@
                 </div>
             </div> <!-- End of Page Container -->
 
-          <div class="col s12">
-            <img ng-src="{{dashboard.temp.ad_image}}"/>
+          <div style="width: 100% !important;max-height: 15% !important;overflow: hidden">
+            <img style="width: 100% !important;height: 120px !important;" ng-src="{{dashboard.temp.ad_image || dashboard.defaultAdPic}}"/>
           </div>
+
+          <footer>
+            <div style="width: 100%" class="footer-copyright blue">
+              <div class="container" style="text-align: center">
+               <span style="vertical-align: top; color:white"> Made with </span><i class="material-icons" style="color:white">
+                 favorite</i> <span style="vertical-align: top; color:white">by
+                inometrics</span>
+              </div>
+            </div>
+          </footer>
 
         </div>
 
 
-
-
-      <footer class="page-footer">
-        <div class="footer-copyright blue">
-          <div class="container" style="text-align: center;">
-            Made with <i class="material-icons" style="position: relative;top: 8px;">favorite</i> by
-            inometrics
-          </div>
-        </div>
-      </footer>
 
       <style>
 

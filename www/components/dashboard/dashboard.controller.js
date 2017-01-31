@@ -1,29 +1,29 @@
-/**
- * Created by taimoortariqdev on 1/10/2017.
- */
-(function () {
-  'use strict';
-
-  angular
+angular
     .module('app.dashboard')
 
     .controller('DashboardController', DashboardController);
 
-    DashboardController.$inject = ['addsServiceData', '$state' ,'$stateParams', '$scope'];
+    DashboardController.$inject = ['addsServiceData', '$state' ,'$stateParams', '$scope', '$interval'];
 
   /* @ngInject */
-    function DashboardController(addsServiceData, $state,$stateParams, $scope) {
+    function DashboardController(addsServiceData, $state,$stateParams, $scope, $interval) {
       var vm = this;
       this.post = [];
       this.advertisement = [];
+      this.defaultAdPic = './img/sidebar.PNG';
       this.ads = [];
       this.temp = '';
       this.advertisement = JSON.parse($stateParams.data);
       this.ads = addsServiceData.returnAds();
-      this.temp = this.ads[0];
+      /*this.temp = this.ads[0];*/
 
-      console.log(vm.ads);
-      console.log(vm.temp);
+      /*console.log(vm.ads);
+      console.log(vm.temp);*/
+
+      $interval(function() {
+        var x = Math.floor((Math.random() * (vm.ads.length)));
+        vm.temp = vm.ads[x];
+      }, 5000);
 
 
       for(var i = 0; i < vm.advertisement.length; ++i) {
@@ -103,6 +103,4 @@
       });
 
 
-
     }
-})();
