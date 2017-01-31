@@ -8,10 +8,11 @@
   configure.$inject = [
 
     '$ionicConfigProvider',
-    '$ionicCloudProvider'
+    '$ionicCloudProvider',
+    '$httpProvider'
   ];
 
-  function configure($ionicConfigProvider, $ionicCloudProvider) {
+  function configure($ionicConfigProvider, $ionicCloudProvider, $httpProvider) {
     // Add your configuration here
     $ionicConfigProvider.tabs.position('bottom');
     $ionicCloudProvider.init({
@@ -31,5 +32,10 @@
         }
       }
     });
+
+    $httpProvider.defaults.headers.common = {};
+    $httpProvider.defaults.headers.post = {};
+    $httpProvider.defaults.headers.put = {};
+    $httpProvider.defaults.headers.patch = {};
   }
 })();
