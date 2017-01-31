@@ -62,7 +62,7 @@ function addsServiceData($http, GetNews, $q, HomeSlider, AdsApi) {
         console.log('GET ADVERTISEMENT API TRUE');
         console.log(vm.SliderUrl);
         deferred.resolve(response.data.datas);
-      }, function errorCallback(response) {
+      }, function errorCallback(error) {
         console.log('GET ADVERTISEMENT API FALSE');
         deferred.reject(error);
       });
@@ -77,7 +77,7 @@ function addsServiceData($http, GetNews, $q, HomeSlider, AdsApi) {
         console.log('GET ADS API TRUE');
         console.log(vm.ads);
         deferred.resolve(response.data.datas);
-      }, function errorCallback(response) {
+      }, function errorCallback(error) {
         console.log('GET ADS API FALSE');
         deferred.reject(error);
       });
