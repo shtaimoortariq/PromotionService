@@ -214,13 +214,25 @@
     this.flagLocation = false;
     this.ads = [];
     this.temp = '';
-    this.advertisement = JSON.parse($stateParams.data);
+    this.dashboardData = addsServiceData.returnNews();
+
+    //this.advertisement = JSON.parse($stateParams.data);
     this.ads = addsServiceData.returnAds();
     this.collection = {
       selectedImage: ''
     };
 
-    this.sendResponseToServer = {};
+    this.sendResponseToServer = {
+      corp_id: 1,
+      userid: 1,
+      ccat : 1,
+      ctype: 1,
+      ctitle: "Test",
+      cdesc: "Test",
+      clatt: 0.0,
+      clong: 0.0,
+      image_src: ""
+    };
 
 
     $interval(function() {

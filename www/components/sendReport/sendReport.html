@@ -39,7 +39,7 @@
             </div>
 
             <div class="input-field">
-                <input id="last_name" type="text" class="validate" ng-model="sendReport.location"/>
+                <input id="location" type="text" class="validate" ng-model="sendReport.location"/>
                 <label for="last_name">Location</label>
             </div>
 
@@ -55,7 +55,7 @@
             </p>
 
 
-            <a class="btn-large  width-100" ui-sref="menu.dashboard"
+            <a class="btn-large  width-100" ui-sref="menu.dashboard({data: sendReport.dashboardData})"
                ng-disabled="!sendReport.category || !sendReport.type || !sendReport.description || !sendReport.location">SEND</a>
 
             <br><br>

@@ -3,8 +3,6 @@ angular
 
     .controller('DashboardController', DashboardController);
 
-
-
     DashboardController.$inject = ['addsServiceData', '$state' ,'$stateParams', '$scope', '$interval'];
 
       /* @ngInject */
@@ -27,10 +25,6 @@ angular
         console.log(vm.ads);
         console.log(vm.temp);
 
-        /*this.temp = this.ads[0];*/
-
-        /*console.log(vm.ads);
-         console.log(vm.temp);*/
 
         $interval(function () {
           var x = Math.floor((Math.random() * (vm.ads.length)));
@@ -38,18 +32,15 @@ angular
           console.log(x);
         }, 5000);
 
-
         console.log(vm.advertisement);
         console.log("DashboardController");
 
         this.post = addsServiceData.returnNews();
 
-
         this.goToReadMore = function (index) {
           console.log(index);
           $state.go('menu.newsDetail', {data: JSON.stringify(vm.post[index])});
         };
-
 
         this.monthNames = ["January", "February", "March", "April", "May", "June",
           "July", "August", "September", "October", "November", "December"
@@ -61,31 +52,8 @@ angular
         this.month = this.monthNames[this.dateObject.getMonth()];
         this.year = this.dateObject.getFullYear();
 
-
         this.completeDate = this.day + " " + this.month + " " + this.year;
         console.log(vm.completeDate);
-
-        /*      //some options to pass to our slider
-         this.data.sliderOptions = {
-         initialSlide: 0,
-         direction: 'horizontal', //or vertical
-         speed: 300 //0.3s transition
-         };
-
-         //create delegate reference to link with slider
-         this.data.sliderDelegate = null;
-
-         //watch our sliderDelegate reference, and use it when it becomes available
-         $scope.$watch('vm.data.sliderDelegate', function (newVal, oldVal) {
-         if (newVal != null) {
-         vm.data.sliderDelegate.on('slideChangeEnd', function () {
-         vm.data.currentPage = vm.data.sliderDelegate.activeIndex;
-         //use this.$apply() to refresh any content external to the slider
-         this.$apply();
-         });
-         }
-         });*/
-
 
         $scope.options = {
           loop: false,
@@ -107,7 +75,5 @@ angular
           $scope.activeIndex = data.slider.activeIndex;
           $scope.previousIndex = data.slider.previousIndex;
         });
-
-
 
     }
