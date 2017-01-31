@@ -3,116 +3,111 @@ angular
 
     .controller('DashboardController', DashboardController);
 
-<<<<<<< HEAD
-    DashboardController.$inject = ['addsServiceData', '$state' ,'$stateParams', '$scope', '$rootScope'];
 
-  /* @ngInject */
-    function DashboardController(addsServiceData, $state,$stateParams, $scope, $rootScope) {
-      var vm = this;
-      this.post = [];
-      this.sliders = [];
-=======
     DashboardController.$inject = ['addsServiceData', '$state' ,'$stateParams', '$scope', '$interval'];
 
-  /* @ngInject */
-    function DashboardController(addsServiceData, $state,$stateParams, $scope, $interval) {
-      var vm = this;
-      this.post = [];
-      this.advertisement = [];
-      this.defaultAdPic = './img/sidebar.PNG';
-      this.ads = [];
-      this.temp = '';
-      this.advertisement = JSON.parse($stateParams.data);
-      this.ads = addsServiceData.returnAds();
+      /* @ngInject */
+      function DashboardController(addsServiceData, $state, $stateParams, $scope, $interval) {
+        var vm = this;
+        this.post = [];
+        this.advertisement = [];
+        this.defaultAdPic = './img/sidebar.PNG';
+        this.sliders = [];
+        this.ads = [];
+        this.temp = '';
+        this.advertisement = JSON.parse($stateParams.data);
+        this.ads = addsServiceData.returnAds();
 
-      this.sliderImages = addsServiceData.returnAdvertisement();
-      console.log(vm.sliderImages);
-      console.log(vm.sliderImages.length);
-
-
-      this.temp = this.ads[0];
-      console.log(vm.ads);
-      console.log(vm.temp);
-
-      /*this.temp = this.ads[0];*/
-
-      /*console.log(vm.ads);
-      console.log(vm.temp);*/
-
-      $interval(function() {
-        var x = Math.floor((Math.random() * (vm.ads.length)));
-        vm.temp = vm.ads[x];
-      }, 5000);
+        this.sliderImages = addsServiceData.returnAdvertisement();
+        console.log(vm.sliderImages);
+        console.log(vm.sliderImages.length);
 
 
-      console.log(vm.advertisement);
-      console.log("DashboardController");
+        this.temp = this.ads[0];
+        console.log(vm.ads);
+        console.log(vm.temp);
 
-      this.post = addsServiceData.returnNews();
+        /*this.temp = this.ads[0];*/
 
+        /*console.log(vm.ads);
+         console.log(vm.temp);*/
 
-      this.goToReadMore = function (index) {
-        console.log(index);
-        $state.go('menu.newsDetail', {data: JSON.stringify(vm.post[index])});
-      };
-
-
-      this.monthNames = ["January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-      ];
-
-      this.dateObject = new Date();
-
-      this.day = this.dateObject.getDate();
-      this.month = this.monthNames[this.dateObject.getMonth()];
-      this.year = this.dateObject.getFullYear();
+        $interval(function () {
+          var x = Math.floor((Math.random() * (vm.ads.length)));
+          vm.temp = vm.ads[x];
+          console.log(x);
+        }, 5000);
 
 
-      this.completeDate = this.day + " " + this.month + " " + this.year;
-      console.log(vm.completeDate);
+        console.log(vm.advertisement);
+        console.log("DashboardController");
 
-/*      //some options to pass to our slider
-      this.data.sliderOptions = {
-        initialSlide: 0,
-        direction: 'horizontal', //or vertical
-        speed: 300 //0.3s transition
-      };
-
-      //create delegate reference to link with slider
-      this.data.sliderDelegate = null;
-
-      //watch our sliderDelegate reference, and use it when it becomes available
-      $scope.$watch('vm.data.sliderDelegate', function (newVal, oldVal) {
-        if (newVal != null) {
-          vm.data.sliderDelegate.on('slideChangeEnd', function () {
-            vm.data.currentPage = vm.data.sliderDelegate.activeIndex;
-            //use this.$apply() to refresh any content external to the slider
-            this.$apply();
-          });
-        }
-      });*/
+        this.post = addsServiceData.returnNews();
 
 
-      $scope.options = {
-        loop: false,
-        effect: 'fade',
-        speed: 500
-      };
+        this.goToReadMore = function (index) {
+          console.log(index);
+          $state.go('menu.newsDetail', {data: JSON.stringify(vm.post[index])});
+        };
 
-      $scope.$on("$ionicSlides.sliderInitialized", function(event, data){
-        // data.slider is the instance of Swiper
-        $scope.slider = data.slider;
-      });
 
-      $scope.$on("$ionicSlides.slideChangeStart", function(event, data){
-        console.log('Slide change is beginning');
-      });
+        this.monthNames = ["January", "February", "March", "April", "May", "June",
+          "July", "August", "September", "October", "November", "December"
+        ];
 
-      $scope.$on("$ionicSlides.slideChangeEnd", function(event, data){
-        // note: the indexes are 0-based
-        $scope.activeIndex = data.slider.activeIndex;
-        $scope.previousIndex = data.slider.previousIndex;
-      });
+        this.dateObject = new Date();
+
+        this.day = this.dateObject.getDate();
+        this.month = this.monthNames[this.dateObject.getMonth()];
+        this.year = this.dateObject.getFullYear();
+
+
+        this.completeDate = this.day + " " + this.month + " " + this.year;
+        console.log(vm.completeDate);
+
+        /*      //some options to pass to our slider
+         this.data.sliderOptions = {
+         initialSlide: 0,
+         direction: 'horizontal', //or vertical
+         speed: 300 //0.3s transition
+         };
+
+         //create delegate reference to link with slider
+         this.data.sliderDelegate = null;
+
+         //watch our sliderDelegate reference, and use it when it becomes available
+         $scope.$watch('vm.data.sliderDelegate', function (newVal, oldVal) {
+         if (newVal != null) {
+         vm.data.sliderDelegate.on('slideChangeEnd', function () {
+         vm.data.currentPage = vm.data.sliderDelegate.activeIndex;
+         //use this.$apply() to refresh any content external to the slider
+         this.$apply();
+         });
+         }
+         });*/
+
+
+        $scope.options = {
+          loop: false,
+          effect: 'fade',
+          speed: 500
+        };
+
+        $scope.$on("$ionicSlides.sliderInitialized", function (event, data) {
+          // data.slider is the instance of Swiper
+          $scope.slider = data.slider;
+        });
+
+        $scope.$on("$ionicSlides.slideChangeStart", function (event, data) {
+          console.log('Slide change is beginning');
+        });
+
+        $scope.$on("$ionicSlides.slideChangeEnd", function (event, data) {
+          // note: the indexes are 0-based
+          $scope.activeIndex = data.slider.activeIndex;
+          $scope.previousIndex = data.slider.previousIndex;
+        });
+
 
 
     }
