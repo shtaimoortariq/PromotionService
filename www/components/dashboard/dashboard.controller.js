@@ -4,6 +4,7 @@ angular
     .controller('DashboardController', DashboardController);
 
 
+
     DashboardController.$inject = ['addsServiceData', '$state' ,'$stateParams', '$scope', '$interval'];
 
       /* @ngInject */
@@ -21,7 +22,6 @@ angular
         this.sliderImages = addsServiceData.returnAdvertisement();
         console.log(vm.sliderImages);
         console.log(vm.sliderImages.length);
-
 
         this.temp = this.ads[0];
         console.log(vm.ads);
