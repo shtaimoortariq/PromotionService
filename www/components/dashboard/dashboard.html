@@ -16,7 +16,7 @@
 
 
           <ion-slides  options="dashboard.options" slider="data.slider">
-            <ion-slide-page ng-repeat="i in dashboard.advertisement track by $index">
+            <ion-slide-page ng-repeat="i in dashboard.sliderImages track by $index">
               <img ng-src="{{i.sliders}}" />
             </ion-slide-page>
           </ion-slides>
@@ -50,7 +50,7 @@
                 </div>
             </div> <!-- End of Page Container -->
 
-          <div class="col s12">
+            <div class="col s12">
             <img ng-src="{{dashboard.temp.ad_image}}"/>
           </div>
 

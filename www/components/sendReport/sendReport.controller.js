@@ -193,9 +193,6 @@
 })();
 */
 
-
-
-
 (function () {
   'use strict';
 
@@ -218,7 +215,7 @@
     this.collection = {
       selectedImage: ''
     };
-
+    this.sendResponseToServer = {}
 
     //GET CORDOVA  http://ngcordova.com/docs/install/
     //GET LOCATION CORDOVA FUNCTION http://ngcordova.com/docs/plugins/geolocation/

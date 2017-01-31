@@ -9,10 +9,10 @@
 
     .controller('DashboardController', DashboardController);
 
-    DashboardController.$inject = ['addsServiceData', '$state' ,'$stateParams', '$scope'];
+    DashboardController.$inject = ['addsServiceData', '$state' ,'$stateParams', '$scope', '$rootScope'];
 
   /* @ngInject */
-    function DashboardController(addsServiceData, $state,$stateParams, $scope) {
+    function DashboardController(addsServiceData, $state,$stateParams, $scope, $rootScope) {
       var vm = this;
       this.post = [];
       this.sliders = [];
@@ -20,19 +20,19 @@
       this.temp = '';
       this.advertisement = JSON.parse($stateParams.data);
       this.ads = addsServiceData.returnAds();
-      this.temp = this.ads[0];
+      this.sliderImages = addsServiceData.returnAdvertisement();
+      console.log(vm.sliderImages);
+      console.log(vm.sliderImages.length);
 
+
+      this.temp = this.ads[0];
       console.log(vm.ads);
       console.log(vm.temp);
 
-
       console.log(vm.advertisement);
-
       console.log("DashboardController");
 
       this.post = addsServiceData.returnNews();
-
-
 
 
       this.goToReadMore = function (index) {
@@ -50,6 +50,7 @@
       this.day = this.dateObject.getDate();
       this.month = this.monthNames[this.dateObject.getMonth()];
       this.year = this.dateObject.getFullYear();
+
 
       this.completeDate = this.day + " " + this.month + " " + this.year;
       console.log(vm.completeDate);
