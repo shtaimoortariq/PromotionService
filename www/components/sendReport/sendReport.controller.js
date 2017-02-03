@@ -200,22 +200,25 @@
     .module('app.sendreport')
     .controller('SendReportController', SendReportController);
 
-  SendReportController.$inject = ['$cordovaGeolocation', '$cordovaImagePicker','$scope' ,'$cordovaDevice', '$cordovaFile', '$ionicPlatform', '$cordovaEmailComposer', '$ionicActionSheet', 'ImageService', 'FileService', '$cordovaToast', 'addsServiceData','$interval'];
+  SendReportController.$inject = ['$cordovaGeolocation', '$cordovaImagePicker','$scope' ,'$cordovaDevice', '$cordovaFile', '$ionicPlatform', '$cordovaEmailComposer', '$ionicActionSheet', 'ImageService', 'FileService', '$cordovaToast', 'addsServiceData','$interval', '$state'];
 
   /* @ngInject */
-  function SendReportController($cordovaGeolocation, $cordovaImagePicker, $scope, cordovaDevice, $cordovaFile, $ionicPlatform, $cordovaEmailComposer, $ionicActionSheet, ImageService, FileService, $cordovaToast, addsServiceData, $interval) {
+  function SendReportController($cordovaGeolocation, $cordovaImagePicker, $scope, cordovaDevice, $cordovaFile, $ionicPlatform, $cordovaEmailComposer, $ionicActionSheet, ImageService, FileService, $cordovaToast, addsServiceData, $interval, $state) {
     var vm = this;
 
     this.hideDetails = false;
     this.category = '';
     this.type = '';
+    this.defaultAdPic = './img/sidebar.PNG';
     this.description = '';
     this.location = '';
     this.flagLocation = false;
     this.ads = [];
     this.temp = '';
     this.dashboardData = addsServiceData.returnNews();
-
+    var USER_STORAGE_KEY = 'promationservice_user';
+    this.user = window.localStorage.getItem(USER_STORAGE_KEY);
+    console.log(this.user);
     //this.advertisement = JSON.parse($stateParams.data);
     this.ads = addsServiceData.returnAds();
     this.collection = {
@@ -251,11 +254,28 @@
       console.log(vm.location);
       console.log(vm.hideDetails);
       console.log(vm.flagLocation);
+
+      this.sendResponseToServer = {
+        corp_id: vm.user.corp,
+        userid: 1,
+        ccat : vm.category,
+        ctype: vm.type,
+        ctitle: "Test",
+        cdesc: vm.description,
+        clatt: 0.0,
+        clong: 0.0,
+        image_src: ""
+      };
+
+
       if (vm.flagLocation) {
         var posOptions = {timeout: 1000, enableHighAccuracy: false};
         $cordovaGeolocation.getCurrentPosition(posOptions).then(function (position) {
           var lat = position.coords.latitude;
           var long = position.coords.longitude;
+          vm.sendResponseToServer.clatt = lat;
+          vm.sendResponseToServer.clong = long;
+
           console.log("Latitute" + lat);
           console.log("Longitute" + long);
         }, function (err) {
@@ -349,6 +369,12 @@
       $scope.images = FileService.images();
 
     });
+
+
+    this.sendToDashboard = function () {
+        $state.go('menu.dashboard', {data: JSON.stringify(vm.dashboardData)});
+
+    };
 
 
     $scope.addMedia = function () {

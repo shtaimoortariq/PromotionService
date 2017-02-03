@@ -1,98 +1,107 @@
 <ion-view>
-    <ion-content style="background-color: gainsboro">
+  <ion-content style="background-color: gainsboro">
 
-        <div class="m-scene" id="main" ng-controller="DashboardController as dashboard"> <!-- Main Container -->
-
-
+    <div class="m-scene" id="main" ng-controller="DashboardController as dashboard"> <!-- Main Container -->
 
 
-            <!-- Slider -->
-         <!-- <ion-slides options="dashboard.data.sliderOptions" slider="dashboard.data.sliderDelegate">
-            <ion-slide-page ng-repeat="bgColor in dashboard.data.bgColors">
-              <div class="box {{bgColor}}"></div>
-            </ion-slide-page>
-          </ion-slides>
--->
+      <!-- Slider -->
+      <!-- <ion-slides options="dashboard.data.sliderOptions" slider="dashboard.data.sliderDelegate">
+         <ion-slide-page ng-repeat="bgColor in dashboard.data.bgColors">
+           <div class="box {{bgColor}}"></div>
+      </ion-slide-page>
+      </ion-slides>
+      -->
 
 
-          <ion-slides  options="dashboard.options" slider="data.slider">
-            <ion-slide-page ng-repeat="i in dashboard.sliderImages track by $index">
-              <img ng-src="{{i.sliders}}" />
-            </ion-slide-page>
-          </ion-slides>
+      <ion-slides options="dashboard.options" slider="data.slider">
+        <ion-slide-page ng-repeat="i in dashboard.sliderImages track by $index">
+          <img ng-src="{{i.sliders}}"/>
+        </ion-slide-page>
+      </ion-slides>
 
-          <!-- Page Content -->
+      <!-- Page Content -->
 
-          <div class="card">
-            <div class="item item-text-wrap">
-              {{dashboard.completeDate}}
-            </div>
-          </div>
-
-
-            <div id="content">
-                <div ng-repeat="i in dashboard.post" class="blog-card animated fadein delay-1">
-                    <div class="blog-header">
-                          <img class="avatar circle" ng-src="{{i.author_img}}" alt="">
-                          <div class="blog-author">
-                              <span>{{i.news_author}}</span>
-                              <span class="small">1hour ago - 62 Share</span>
-                          </div>
-                      </div>
-                      <div class="blog-image">
-                          <img ng-src="{{i.news_img}}" alt="">
-                      </div>
-                      <div class="blog-preview p-20">
-                          <h4 class="uppercase">{{i.news_title}}</h4>
-                          <p>{{i.news_desc}}</p>
-                          <a class="waves-effect waves-light btn primary-color" ng-click="dashboard.goToReadMore($index)">Read</a>
-                      </div>
-                </div>
-            </div> <!-- End of Page Container -->
-
-
-          <div style="width: 100% !important;max-height: 15% !important;overflow: hidden">
-            <img style="width: 100% !important;height: 120px !important;" ng-src="{{dashboard.temp.ad_image || dashboard.defaultAdPic}}"/>
-
-          </div>
-
-          <footer>
-            <div style="width: 100%" class="footer-copyright blue">
-              <div class="container" style="text-align: center">
-               <span style="vertical-align: top; color:white"> Made with </span><i class="material-icons" style="color:white">
-                 favorite</i> <span style="vertical-align: top; color:white">by
-                inometrics</span>
-              </div>
-            </div>
-          </footer>
-
+      <div class="card card_alignment">
+        <div class="item item-text-wrap">
+          {{dashboard.completeDate}}
         </div>
+      </div>
 
 
 
-      <style>
-
-        .box {
-          height: 250px;
-        }
-
-        ion-slides {
-          height: 250px !important;
-        }
-
-        .swiper-container-horizontal > .swiper-pagination {
-          bottom: 6%;
-          left: 0;
-          width: 100%;
-        }
-
-        .swiper-pagination-bullet {
-          background: #0c60ee;
-        }
-
-      </style>
+      <div id="content">
+        <div ng-repeat="i in dashboard.post" class="blog-card animated fadein delay-1">
+          <div class="blog-header">
+            <img class="avatar circle" ng-src="{{i.author_img}}" alt="">
+            <div class="blog-author">
+              <span>{{i.news_author}}</span>
+              <span class="small">1hour ago - 62 Share</span>
+            </div>
+          </div>
+          <div class="blog-image">
+            <img ng-src="{{i.news_img}}" alt="">
+          </div>
+          <div class="blog-preview p-20">
+            <h4 class="uppercase">{{i.news_title}}</h4>
+            <p>{{i.news_desc}}</p>
+            <a class="waves-effect waves-light btn primary-color" ng-click="dashboard.goToReadMore($index)">Read</a>
+          </div>
+        </div>
+      </div> <!-- End of Page Container -->
 
 
-    </ion-content>
+      <div style="width: 100% !important;max-height: 15% !important;overflow: hidden">
+        <img style="width: 100% !important;height: 120px !important;"
+             ng-src="{{dashboard.temp.ad_image || dashboard.defaultAdPic}}"/>
+
+      </div>
+
+      <footer>
+        <div style="width: 100%" class="footer-copyright blue">
+          <div class="container" style="text-align: center">
+            <span style="vertical-align: top; color:white"> Made with </span><i class="material-icons"
+                                                                                style="color:white">
+            favorite</i> <span style="vertical-align: top; color:white">by
+                inometrics</span>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+
+
+    <style>
+
+      .card_alignment {
+        width: 100%;
+        position: relative;
+        bottom: 35px;
+        right: 10px;
+      }
+
+
+
+      .box {
+        height: 250px;
+      }
+
+      ion-slides {
+        height: 250px !important;
+      }
+
+      .swiper-container-horizontal > .swiper-pagination {
+        bottom: 13%;
+        left: 0;
+        width: 100%;
+      }
+
+      .swiper-pagination-bullet {
+        background: #0c60ee;
+      }
+
+    </style>
+
+
+  </ion-content>
 </ion-view>
 

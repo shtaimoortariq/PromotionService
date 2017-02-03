@@ -27,6 +27,7 @@
           templateUrl: "./components/menu/menu.html",
           controller: 'MenuController as menu',
           abstract: true
+
         }
       )
       .state('signup', {
@@ -47,15 +48,11 @@
         }
       })
 
-      .state('menu.corporation', {
+      .state('corporation', {
         url: '/corporation',
         abstract: false,
-        views: {
-          'menuContent': {
-            templateUrl: './components/corporation/corporation.html',
-            controller: "CorporationController"
-          }
-        }
+        templateUrl: './components/corporation/corporation.html',
+        controller: "CorporationController"
       })
 
       .state('menu.sendreport', {
@@ -78,7 +75,6 @@
           }
         }
       });
-
 
 
     // Each tab has its own nav history stack which is defined in the corresponding module.

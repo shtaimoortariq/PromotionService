@@ -5,9 +5,9 @@
     .module('app')
     .run(runBlock);
 
-  runBlock.$inject = ['$ionicPlatform', '$state', '$ionicPush', 'addsServiceData', '$q'];
+  runBlock.$inject = ['$ionicPlatform', '$state', '$ionicPush', 'addsServiceData', '$q', '$rootScope', '$cordovaNetwork'];
 
-  function runBlock($ionicPlatform, $state, $ionicPush, addsServiceData, $q) {
+  function runBlock($ionicPlatform, $state, $ionicPush, addsServiceData, $q, $rootScope, $cordovaNetwork) {
 
     $ionicPlatform.ready(function() {
         var vm = this;
@@ -17,35 +17,59 @@
       console.log("retrievedObject");
       console.log(JSON.parse(retrievedObject));
 
+      document.addEventListener("deviceready", function () {
 
-        addsServiceData.getNewsData().then(
-          function (successNews) {
-            console.log('APP.RUN: GET NEWS API TRUE');
-            addsServiceData.getSliderImageDataFromServer().then(
-              function (successAdvertisement) {
-                  console.log('APP.RUN: GET ADVERTISEMENT API SUCCESS', successAdvertisement);
-                addsServiceData.getAdsFromServer().then(
-                  function (success) {
-                    console.log('APP.RUN: GET ADS API SUCCESS', success);
-                    if(retrievedObject) {
-                      console.log("true");
-                      $state.go('menu.dashboard', {data: JSON.stringify(successNews)});
-                    }
-                    else {
-                      $state.go('signup');
-                    }
-                  },function (error) {
-                    console.log("APP.RUN: GET ADS API FALSE");
+        var type = $cordovaNetwork.getNetwork();
+        var isOnline = $cordovaNetwork.isOnline();
+        var isOffline = $cordovaNetwork.isOffline();
+
+        console.log(type);
+        console.log(isOnline);
+        console.log(isOffline);
+
+
+        // listen for Online event
+        $rootScope.$on('$cordovaNetwork:online', function(event, networkState){
+          var onlineState = networkState;
+          console.log(onlineState);
+        });
+
+        // listen for Offline event
+        $rootScope.$on('$cordovaNetwork:offline', function(event, networkState){
+          var offlineState = networkState;
+          console.log(offlineState);
+        })
+
+      }, false);
+
+      addsServiceData.getNewsData().then(
+        function (successNews) {
+          console.log('APP.RUN: GET NEWS API TRUE');
+          addsServiceData.getSliderImageDataFromServer().then(
+            function (successAdvertisement) {
+                console.log('APP.RUN: GET ADVERTISEMENT API SUCCESS', successAdvertisement);
+              addsServiceData.getAdsFromServer().then(
+                function (success) {
+                  console.log('APP.RUN: GET ADS API SUCCESS', success);
+                  if(retrievedObject) {
+                    console.log("true");
+                    $state.go('menu.dashboard', {data: JSON.stringify(successNews)});
                   }
-                );
-              },function (error) {
-                console.log("APP.RUN: GET ADVERTISEMENT API FALSE");
-              }
-            );
-          },function (error) {
-            console.log('APP.RUN: GET NEWS API FALSE');
-          }
-        );
+                  else {
+                    $state.go('signup');
+                  }
+                },function (error) {
+                  console.log("APP.RUN: GET ADS API FALSE");
+                }
+              );
+            },function (error) {
+              console.log("APP.RUN: GET ADVERTISEMENT API FALSE");
+            }
+          );
+        },function (error) {
+          console.log('APP.RUN: GET NEWS API FALSE');
+        }
+      );
 
 
 
