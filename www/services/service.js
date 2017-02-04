@@ -107,7 +107,6 @@
  });
  */
 
-
 angular.module('app')
   .factory('FileService', function () {
     var images = [];
@@ -125,7 +124,7 @@ angular.module('app')
 
     function addImage(img) {
       console.log("add Image in service");
-      images.push(img);
+      images[0] = img;
       window.localStorage.setItem(IMAGE_STORAGE_KEY, JSON.stringify(images));
       console.log("ADDed")
     }
@@ -135,6 +134,7 @@ angular.module('app')
       images: getImages
     }
   })
+
 
   .factory('ImageService', function ($cordovaCamera, FileService, $cordovaFile, $ionicLoading) {
 

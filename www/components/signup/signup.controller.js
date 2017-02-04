@@ -27,14 +27,20 @@
     this.selectDistrict = [];
     this.termsAndCondition = "";
     this.distr = 0;
+    this.tempDistrictData = {};
+    var USER_STORAGE_KEY = 'promationservice_district';
     //====================END GLOBEL VARIABLE==================//
 
 
     //====================START GET DISTRICT FROM SERVER==================//
     $http.get(DistrictApi.url).then(function successCallback(response) {
         vm.selectDistrict =  response.data.datas;
+        window.localStorage.setItem(USER_STORAGE_KEY,JSON.stringify(response));
     }, function errorCallback(response) {
         console.log(response);
+        vm.tempDistrictData = window.localStorage.getItem(USER_STORAGE_KEY);
+        vm.selectDistrict = vm.tempDistrictData.data.datas;
+        console.log(vm.selectDistrict);
     });
     //====================END GET DISTRICT FROM SERVER==================//
 

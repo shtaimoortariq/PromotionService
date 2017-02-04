@@ -12,10 +12,7 @@
     $ionicPlatform.ready(function() {
         var vm = this;
 
-      var USER_STORAGE_KEY = 'promationservice_user';
-      var retrievedObject = localStorage.getItem(USER_STORAGE_KEY);
-      console.log("retrievedObject");
-      console.log(JSON.parse(retrievedObject));
+
 
       document.addEventListener("deviceready", function () {
 
@@ -27,17 +24,17 @@
         console.log(isOnline);
         console.log(isOffline);
 
-
+        var onlineState = "";
         // listen for Online event
         $rootScope.$on('$cordovaNetwork:online', function(event, networkState){
           var onlineState = networkState;
           console.log(onlineState);
+
         });
 
         // listen for Offline event
         $rootScope.$on('$cordovaNetwork:offline', function(event, networkState){
           var offlineState = networkState;
-          console.log(offlineState);
         })
 
       }, false);
@@ -47,31 +44,35 @@
           console.log('APP.RUN: GET NEWS API TRUE');
           addsServiceData.getSliderImageDataFromServer().then(
             function (successAdvertisement) {
-                console.log('APP.RUN: GET ADVERTISEMENT API SUCCESS', successAdvertisement);
+              console.log('APP.RUN: GET ADVERTISEMENT API SUCCESS', successAdvertisement);
               addsServiceData.getAdsFromServer().then(
                 function (success) {
                   console.log('APP.RUN: GET ADS API SUCCESS', success);
-                  if(retrievedObject) {
+
+                  var USER_STORAGE_KEY = 'promationservice_user';
+                  var retrievedObject = localStorage.getItem(USER_STORAGE_KEY);
+                  console.log("retrievedObject");
+                  console.log(JSON.parse(retrievedObject));
+
+                  if (retrievedObject) {
                     console.log("true");
                     $state.go('menu.dashboard', {data: JSON.stringify(successNews)});
                   }
                   else {
                     $state.go('signup');
                   }
-                },function (error) {
+                }, function (error) {
                   console.log("APP.RUN: GET ADS API FALSE");
                 }
               );
-            },function (error) {
+            }, function (error) {
               console.log("APP.RUN: GET ADVERTISEMENT API FALSE");
             }
           );
-        },function (error) {
+        }, function (error) {
           console.log('APP.RUN: GET NEWS API FALSE');
         }
       );
-
-
 
       // Hide the accessory bar by default (remove this to show the accessory bar
       // above the keyboard for form inputs)

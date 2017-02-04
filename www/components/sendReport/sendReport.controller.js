@@ -198,12 +198,20 @@
 
   angular
     .module('app.sendreport')
+
+    //============= START API CONSTANT =============//
+    .constant('RegisterterApi', {
+      url: "http://www.inometrics.com/SERVER/cityCorp/Services/citycorp_registercompliant"
+    })
+    //============= END API CONSTANT =============//
+
+
     .controller('SendReportController', SendReportController);
 
-  SendReportController.$inject = ['$cordovaGeolocation', '$cordovaImagePicker','$scope' ,'$cordovaDevice', '$cordovaFile', '$ionicPlatform', '$cordovaEmailComposer', '$ionicActionSheet', 'ImageService', 'FileService', '$cordovaToast', 'addsServiceData','$interval', '$state'];
+  SendReportController.$inject = ['$cordovaGeolocation', '$cordovaImagePicker','$scope' ,'$cordovaDevice', '$cordovaFile', '$ionicPlatform', '$cordovaEmailComposer', '$ionicActionSheet', 'ImageService', 'FileService', '$cordovaToast', 'addsServiceData','$interval', '$state', 'RegisterterApi', '$http'];
 
   /* @ngInject */
-  function SendReportController($cordovaGeolocation, $cordovaImagePicker, $scope, cordovaDevice, $cordovaFile, $ionicPlatform, $cordovaEmailComposer, $ionicActionSheet, ImageService, FileService, $cordovaToast, addsServiceData, $interval, $state) {
+  function SendReportController($cordovaGeolocation, $cordovaImagePicker, $scope, cordovaDevice, $cordovaFile, $ionicPlatform, $cordovaEmailComposer, $ionicActionSheet, ImageService, FileService, $cordovaToast, addsServiceData, $interval, $state, RegisterterApi, $http) {
     var vm = this;
 
     this.hideDetails = false;
@@ -264,7 +272,7 @@
         cdesc: vm.description,
         clatt: 0.0,
         clong: 0.0,
-        image_src: ""
+        image_src: FileService.getImages()
       };
 
 
@@ -290,7 +298,8 @@
 
     this.hideMyDetails = function () {
       console.log(vm.hideDetails);
-      console.log("ASDASDASDASDASDASDASDAS")
+      console.log("ASDASDASDASDASDASDASDAS");
+      vm.sendResponseToServer.userid = 0;
     };
 
 
@@ -372,7 +381,16 @@
 
 
     this.sendToDashboard = function () {
+
+
+      $http.post(RegisterterApi.url, vm.sendResponseToServer).then(function successCallback(response) {
+        console.log(response);
         $state.go('menu.dashboard', {data: JSON.stringify(vm.dashboardData)});
+      }, function errorCallback(response) {
+        console.log(response);
+      });
+
+
 
     };
 
